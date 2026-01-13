@@ -25,11 +25,8 @@ import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
-<<<<<<< HEAD
-=======
 import { rehypeImageWidth } from "./src/plugins/rehype-image-width.mjs";
 
->>>>>>> upstream/master
 // https://astro.build/config
 export default defineConfig({
 	site: siteConfig.siteURL,
