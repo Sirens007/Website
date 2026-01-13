@@ -410,7 +410,7 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 };
 
 export const commentConfig: CommentConfig = {
-	enable: false, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
+	enable: true, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
 	twikoo: {
 		envId: "https://netlify-sirens.netlify.app/.netlify/functions/twikoo",
 		//vervel的，国内访问较慢 暂存记录一下   https://twikoo-api-ruby-seven.vercel.app
@@ -442,7 +442,41 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 
 export const footerConfig: FooterConfig = {
 	enable: true, // 是否启用Footer HTML注入功能
-	customHtml: "", // HTML格式的自定义页脚信息，例如备案号等，默认留空
+	customHtml: `
+<footer style="
+  text-align:center;
+  font-size:14px;
+  font-family: -apple-system, BlinkMacSystemFont,
+               'Segoe UI', Arial, 'PingFang SC',
+               'Microsoft YaHei', sans-serif;
+">
+  <div style="
+    display:inline-flex;
+    align-items:center;
+    white-space:nowrap;
+    gap:6px;
+  ">
+    <a href="https://beian.miit.gov.cn/"
+       target="_blank"
+       rel="noopener"
+       style="color:#ededede6;text-decoration:none;">
+      桂ICP备2026000608号
+    </a>
+
+    <span style="color:#ededede6;">|</span>
+
+    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=45031202000488"
+       target="_blank"
+       rel="noopener"
+       style="color:#ededede6;text-decoration:none;display:inline-flex;align-items:center;">
+      <img src="/beian.png"
+           alt="公安备案图标"
+           style="height:14px;margin-right:4px;vertical-align:middle;">
+      桂公网安备 45031202000488号
+    </a>
+  </div>
+</footer>
+  `.trim(), // HTML格式的自定义页脚信息，例如备案号等，默认留空
 	// 也可以直接编辑 FooterConfig.html 文件来添加备案号等自定义内容
 	// 注意：若 customHtml 不为空，则使用 customHtml 中的内容；若 customHtml 留空，则使用 FooterConfig.html 文件中的内容
 	// FooterConfig.html 可能会在未来的某个版本弃用
