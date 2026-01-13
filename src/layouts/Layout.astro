@@ -454,6 +454,7 @@ async function initializePanelManager() {
 					if (ie == tDom || (ie?.contains(tDom))) {
 						return;
 					}
+<<<<<<< HEAD
 				}
 				await panelManager.closePanel(panel as any);
 			});
@@ -527,6 +528,148 @@ function initCustomScrollbar() {
 		element.setAttribute('data-scrollbar-initialized', 'true');
 	});
 }
+=======
+					await panelManager.closePanel(panel as any);
+				});
+			}
+
+			setClickOutsideToClose("display-setting", [
+				"display-setting",
+				"display-settings-switch",
+			]);
+			setClickOutsideToClose("nav-menu-panel", [
+				"nav-menu-panel",
+				"nav-menu-switch",
+			]);
+			setClickOutsideToClose("search-panel", [
+				"search-panel",
+				"search-bar",
+				"search-switch",
+			]);
+			setClickOutsideToClose("mobile-toc-panel", [
+				"mobile-toc-panel",
+				"mobile-toc-switch",
+			]);
+			setClickOutsideToClose("wallpaper-mode-panel", [
+				"wallpaper-mode-panel",
+				"wallpaper-mode-switch",
+			]);
+
+			return panelManager;
+		} catch (error) {
+			console.error("Failed to initialize panel manager:", error);
+			return null;
+		}
+	}
+
+	initializePanelManager();
+
+	// function _loadTheme() {
+	//  const theme = getStoredTheme()
+	//  setTheme(theme)
+	// }
+
+	// function _loadHue() {
+	//  setHue(getHue())
+	// }
+
+	function initCustomScrollbar() {
+		// 完全禁用OverlayScrollbars的body初始化，避免导致页面重新加载
+		// 只处理katex元素的滚动条
+		const katexElements = document.querySelectorAll(
+			".katex-display:not([data-scrollbar-initialized])",
+		) as NodeListOf<HTMLElement>;
+
+		katexElements.forEach((element) => {
+			if (!element.parentNode) return;
+
+			const container = document.createElement("div");
+			container.className = "katex-display-container";
+			element.parentNode.insertBefore(container, element);
+			container.appendChild(element);
+
+			// 使用简单的CSS滚动条而不是OverlayScrollbars
+			container.style.cssText = `
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0,0,0,0.3) transparent;
+        `;
+
+			// 为webkit浏览器添加自定义滚动条样式
+			const style = document.createElement("style");
+			style.textContent = `
+            .katex-display-container::-webkit-scrollbar {
+                height: 6px;
+            }
+            .katex-display-container::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            .katex-display-container::-webkit-scrollbar-thumb {
+                background: rgba(0,0,0,0.3);
+                border-radius: 3px;
+            }
+            .katex-display-container::-webkit-scrollbar-thumb:hover {
+                background: rgba(0,0,0,0.5);
+            }
+        `;
+
+			if (!document.head.querySelector("style[data-katex-scrollbar]")) {
+				style.setAttribute("data-katex-scrollbar", "true");
+				document.head.appendChild(style);
+			}
+
+			element.setAttribute("data-scrollbar-initialized", "true");
+		});
+	}
+
+	function showBanner() {
+		// 使用requestAnimationFrame优化DOM操作
+		requestAnimationFrame(() => {
+			// Handle single image banner (desktop)
+			const banner = document.getElementById("banner");
+			if (banner) {
+				banner.classList.remove("opacity-0", "scale-105");
+			}
+
+			// Handle mobile single image banner - 使用与电脑端相同的逻辑
+			const mobileBanner = document.querySelector(
+				'.block.lg\\:hidden[alt="Mobile banner image of the blog"]',
+			);
+			if (mobileBanner && !document.getElementById("banner-carousel")) {
+				// 移动端使用与电脑端相同的初始化逻辑
+				mobileBanner.classList.remove("opacity-0", "scale-105");
+				mobileBanner.classList.add("opacity-100");
+			}
+
+			// Handle carousel banner - 立即初始化，移除延迟
+			const carousel = document.getElementById("banner-carousel");
+			if (carousel) {
+				// 立即初始化轮播，移除延迟以改善流畅性
+				initCarousel();
+			}
+		});
+	}
+
+	function initCarousel() {
+		const carouselItems = document.querySelectorAll(".carousel-item");
+		// 根据屏幕尺寸过滤有效的轮播项
+		const isMobile = window.innerWidth < 1024; // lg breakpoint
+		const validItems = Array.from(carouselItems).filter((item) => {
+			if (isMobile) {
+				// 移动端：只显示有mobile图片的项目
+				return item.querySelector(".block.lg\\:hidden");
+			} else {
+				// 桌面端：只显示有desktop图片的项目
+				return item.querySelector(".hidden.lg\\:block");
+			}
+		});
+
+		if (validItems.length > 1 && siteConfig.banner.carousel?.enable) {
+			let currentIndex = 0;
+			const interval = siteConfig.banner.carousel?.interval || 6;
+			let carouselInterval: any;
+			let isPaused = false;
+>>>>>>> upstream/master
 
 function showBanner() {
 	// 使用requestAnimationFrame优化DOM操作
