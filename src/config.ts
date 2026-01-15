@@ -10,6 +10,7 @@ import type {
 	PermalinkConfig,
 	ProfileConfig,
 	SakuraConfig,
+	ShareConfig,
 	SidebarLayoutConfig,
 	SiteConfig,
 } from "./types/config";
@@ -115,7 +116,6 @@ export const siteConfig: SiteConfig = {
 
 		carousel: {
 			enable: true, // 为 true 时：为多张图片启用轮播。为 false 时：从数组中随机显示一张图片
-
 			interval: 1.5, // 轮播间隔时间（秒）
 		},
 
@@ -416,6 +416,10 @@ export const commentConfig: CommentConfig = {
 		//vervel的，国内访问较慢 暂存记录一下   https://twikoo-api-ruby-seven.vercel.app
 		lang: "zh_CN", // 设置 Twikoo 评论系统语言为英文
 	},
+};
+
+export const shareConfig: ShareConfig = {
+	enable: true, // 启用分享功能
 };
 
 export const announcementConfig: AnnouncementConfig = {
