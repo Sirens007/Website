@@ -50,10 +50,14 @@ export const siteConfig: SiteConfig = {
 
 	// 顶栏标题配置
 	navbarTitle: {
+		// 显示模式："text-icon" 显示图标+文本，"logo" 仅显示Logo
+		mode: "logo",
 		// 顶栏标题文本
 		text: "Sirens",
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.png
 		icon: "assets/home/home.png",
+		// 网站Logo图片路径
+		logo: "assets/home/default-logo.png",
 	},
 
 	bangumi: {
@@ -278,7 +282,7 @@ export const navBarConfig: NavBarConfig = {
 					icon: "material-symbols:book",
 				},
 				{
-					name: "Gallery",	//相册
+					name: "Albums",
 					url: "/albums/",
 					icon: "material-symbols:photo-library",
 				},
