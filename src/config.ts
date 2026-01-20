@@ -1,4 +1,4 @@
-import type {
+ import type {
 	AnnouncementConfig,
 	CommentConfig,
 	ExpressiveCodeConfig,
@@ -346,25 +346,19 @@ export const profileConfig: ProfileConfig = {
 	},
 	links: [
 		{
-<<<<<<< HEAD
 			name: "CSDN",
 			icon: "simple-icons:csdn",
 			url: "https://blog.csdn.net/2402_87978990",
-=======
-			name: "Bilibili",
-			icon: "fa6-brands:bilibili",
-			url: "https://space.bilibili.com/701864046",
->>>>>>> upstream/master
-		},
-		{
-			name: "Gitee",
-			icon: "mdi:git",
-			url: "https://gitee.com/Sirens007",
 		},
 		{
 			name: "GitHub",
 			icon: "fa6-brands:github",
 			url: "https://github.com/Sirens007",
+		},
+		{
+			name: "Gitee",
+			icon: "mdi:git",
+			url: "https://gitee.com/Sirens007",
 		},
 		// {
 		// 	name: "Codeberg",
