@@ -78,7 +78,7 @@ export const siteConfig: SiteConfig = {
 	postListLayout: {
 		// 默认布局模式："list" 列表模式（单列布局），"grid" 网格模式（双列布局）
 		// 注意：如果侧边栏配置启用了"both"双侧边栏，则无法使用文章列表"grid"网格（双列）布局
-		defaultMode: "list",
+		defaultMode: "grid",
 		// 是否允许用户切换布局
 		allowSwitch: true,
 	},
@@ -92,7 +92,7 @@ export const siteConfig: SiteConfig = {
 	// 壁纸模式配置
 	wallpaperMode: {
 		// 默认壁纸模式：banner=顶部横幅，fullscreen=全屏壁纸，none=无壁纸
-		defaultMode: "fullscreen",
+		defaultMode: "banner",
 		// 整体布局方案切换按钮显示设置（默认："desktop"）
 		// "off" = 不显示
 		// "mobile" = 仅在移动端显示
@@ -473,16 +473,16 @@ export const footerConfig: FooterConfig = {
     <a href="https://beian.miit.gov.cn/"
        target="_blank"
        rel="noopener"
-       style="color:#ededede6;text-decoration:none;">
+       style="color:#00000089;text-decoration:none;">
       桂ICP备2026000608号
     </a>
 
-    <span style="color:#ededede6;">|</span>
+    <span style="color:#00000089;">|</span>
 
     <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=45031202000488"
        target="_blank"
        rel="noopener"
-       style="color:#ededede6;text-decoration:none;display:inline-flex;align-items:center;">
+       style="color:#00000089;text-decoration:none;display:inline-flex;align-items:center;">
       <img src="/beian.png"
            alt="公安备案图标"
            style="height:14px;margin-right:4px;vertical-align:middle;">
