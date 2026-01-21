@@ -20,21 +20,22 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.anime-page .stat-icon {
-  @apply w-12 h-12 rounded-lg flex items-center justify-center text-white text-xl font-bold shadow-md;
-  background: linear-gradient(135deg, var(--primary), oklch(from var(--primary) calc(l + 0.1) c calc(h + 30)));
+@container (min-width: 30rem) {
+  .anime-grid-container.anime-grid-mode {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.anime-page .stat-content {
-  @apply flex-1;
+@container (min-width: 48rem) {
+  .anime-grid-container.anime-grid-mode {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-.anime-page .stat-number {
-  @apply text-2xl font-bold text-black/90 dark:text-white/90;
-  background: linear-gradient(135deg, var(--primary), oklch(from var(--primary) calc(l + 0.1) c calc(h + 30)));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+@container (min-width: 64rem) {
+  .anime-grid-container.anime-grid-mode {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 .anime-page .stat-label {
