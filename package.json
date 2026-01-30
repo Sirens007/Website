@@ -74,7 +74,7 @@
 		"satori": "^0.18.3",
 		"sharp": "^0.34.5",
 		"stylus": "^0.64.0",
-		"svelte": "^5.45.5",
+		"svelte": "^5.46.1",
 		"tailwindcss": "^3.4.18",
 		"typescript": "^5.9.3",
 		"unist-util-visit": "^5.0.0"
@@ -86,11 +86,17 @@
 		"@types/hast": "^3.0.4",
 		"@types/markdown-it": "^14.1.2",
 		"@types/mdast": "^4.0.4",
+		"@types/qrcode": "^1.5.6",
 		"@types/sanitize-html": "^2.16.0",
 		"fontmin": "^1.1.1",
 		"postcss-import": "^16.1.1",
 		"postcss-nesting": "^13.0.2",
 		"prettier": "^3.7.4"
 	},
-	"packageManager": "pnpm@10.27.0+sha512.72d699da16b1179c14ba9e64dc71c9a40988cbdc65c264cb0e489db7de917f20dcf4d64d8723625f2969ba52d4b7e2a1170682d9ac2a5dcaeaab732b7e16f04a"
+	"packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264",
+	"pnpm": {
+		"overrides": {
+			"@emmetio/css-parser": "https://codeload.github.com/ramya-rao-a/css-parser/tar.gz/370c480ac103bd17c7bcfb34bf5d577dc40d3660"
+		}
+	}
 }
