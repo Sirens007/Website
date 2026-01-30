@@ -1,16 +1,16 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getPostUrl } from "@utils/url-utils";
-import { sidebarLayoutConfig, siteConfig } from "../config";
+import type { Page } from "astro";
+import { siteConfig } from "../config";
+import { widgetManager } from "../utils/widget-manager";
 import PostCard from "./PostCard.astro";
 
 const { page } = Astro.props;
 
-let delay = 0;
-const interval = 50;
-
-// 检查是否启用双侧边栏
-const isBothSidebars = sidebarLayoutConfig.position === "both";
+// 检查是否启用右侧边栏（通过检查右侧是否有组件）
+const hasRightSidebars =
+	widgetManager.getComponentsByPosition("top", "right", "desktop").length > 0 ||
+	widgetManager.getComponentsByPosition("sticky", "right", "desktop").length > 0;
 
 // 根据配置设置初始布局模式，避免闪烁
 const defaultLayout = siteConfig.postListLayout.defaultMode || "list";
@@ -19,11 +19,12 @@ const initialLayoutClass =
 		? "grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 grid-mode"
 		: "flex flex-col gap-2 md:gap-4 list-mode";
 ---
-<div 
-  id="post-list-container"
-  class={`transition-all duration-500 ease-in-out rounded-[var(--radius-large)] bg-[var(--card-bg)] py-0 md:py-0 md:bg-transparent mb-4 ${initialLayoutClass}`}
-  data-default-layout={defaultLayout}
-  data-both-sidebars={isBothSidebars}
+
+<div
+	id="post-list-container"
+	class={`transition-all duration-500 ease-in-out rounded-[var(--radius-large)] bg-[var(--card-bg)] md:bg-transparent mb-4 ${initialLayoutClass}`}
+	data-default-layout={defaultLayout}
+	data-both-sidebars={hasRightSidebars}
 >
     {page.data.map((entry: CollectionEntry<"posts">) => (
         <PostCard
