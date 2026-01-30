@@ -229,6 +229,9 @@ function loadSong(song: typeof currentSong) {
 	}
 }
 
+// 标记是否因浏览器策略导致自动播放失败
+let autoplayFailed = false;
+
 function handleLoadSuccess() {
 	isLoading = false;
 	if (audio?.duration && audio.duration > 1) {
@@ -654,7 +657,9 @@ onDestroy(() => {
                  aria-valuemin="0"
                  aria-valuemax="100"
                  aria-valuenow={volume * 100}>
-                <div class="h-full bg-[var(--primary)] rounded-full transition-all duration-100"
+                <div class="h-full bg-[var(--primary)] rounded-full transition-all"
+                     class:duration-100={!isVolumeDragging}
+                     class:duration-0={isVolumeDragging}
                      style="width: {volume * 100}%"></div>
             </div>
             <button class="btn-plain w-8 h-8 rounded-lg flex items-center justify-center"
