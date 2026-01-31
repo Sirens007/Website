@@ -24,7 +24,7 @@ const SITE_TIMEZONE = 8; //设置你的网站时区 from -12 to 12 default in UT
 export const siteConfig: SiteConfig = {
 	title: "Sirens",
 	subtitle: "Blog",
-	siteURL: "http://blog.sirens007.cn/", // 请替换为你的站点URL，以斜杠结尾
+	siteURL: "http://sirens007.cn/", // 请替换为你的站点URL，以斜杠结尾
 	siteStartDate: "2025-09-30", // 站点开始运行日期，用于站点统计组件计算运行天数
 
 	timeZone: SITE_TIMEZONE,
@@ -468,29 +468,29 @@ export const footerConfig: FooterConfig = {
 <footer style="
   text-align:center;
   font-size:14px;
-  font-family: -apple-system, BlinkMacSystemFont,
-               'Segoe UI', Arial, 'PingFang SC',
-               'Microsoft YaHei', sans-serif;
+  color: currentColor;
+  font-family: inherit;
 ">
   <div style="
     display:inline-flex;
     align-items:center;
     white-space:nowrap;
     gap:6px;
+    opacity:.65;
   ">
     <a href="https://beian.miit.gov.cn/"
        target="_blank"
        rel="noopener"
-       style="color:#00000089;text-decoration:none;">
+       style="color:inherit;text-decoration:none;">
       桂ICP备2026000608号
     </a>
 
-    <span style="color:#00000089;">|</span>
+    <span style="color:inherit;">|</span>
 
     <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=45031202000488"
        target="_blank"
        rel="noopener"
-       style="color:#00000089;text-decoration:none;display:inline-flex;align-items:center;">
+       style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;">
       <img src="/beian.png"
            alt="公安备案图标"
            style="height:14px;margin-right:4px;vertical-align:middle;">
