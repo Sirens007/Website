@@ -1,9 +1,6 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
-<<<<<<< HEAD
-=======
 import { z } from "astro/zod";
->>>>>>> upstream/master
 
 const postsCollection = defineCollection({
 	loader: glob({ pattern: "**/*.md", base: "./src/content/posts" }),
