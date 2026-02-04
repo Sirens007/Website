@@ -165,6 +165,7 @@ tags: [tag1, tag2]
 category: Frontend
 draft: false
 pinned: false
+comment: true
 lang: en      # Only set when article language differs from site language in config.ts
 ---
 ```
@@ -179,6 +180,7 @@ lang: en      # Only set when article language differs from site language in con
 - **category**: Article category
 - **draft**: Set to `true` to hide article in production
 - **pinned**: Set to `true` to pin article to top
+- **comment**: Set to `true` to enable article comment area (requires global comment function enabled)
 - **lang**: Article language (only set when different from site default)
 
 ### Pinned Articles Feature
@@ -194,6 +196,19 @@ pinned: false # Regular article (default)
 **Sorting Rules:**
 1. Pinned articles appear first, sorted by publication date (newest first)
 2. Regular articles follow, sorted by publication date (newest first)
+
+### Article-Level Comment Control
+
+The `comment` field allows you to individually control the enabling and disabling of the comment area for each article.
+
+**Usage:**
+```yaml
+comment: true  # Enable comments (default)
+comment: false # Disable comments
+```
+
+**Note:**
+This feature requires the comment system to be enabled in `src/config.ts` first.
 
 ## 🧩 Markdown Extensions
 
