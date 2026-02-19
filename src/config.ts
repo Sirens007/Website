@@ -679,14 +679,8 @@ export const widgetConfigs = {
 	layout: sidebarLayoutConfig,
 	sakura: sakuraConfig,
 	fullscreenWallpaper: fullscreenWallpaperConfig,
-	pio: pioConfig, // 添加 pio 配置
+	pio: pioConfig,
+	share: shareConfig,
 } as const;
 
-export const umamiConfig = {
-	enabled: true, // 是否显示Umami统计
-	apiKey: import.meta.env.UMAMI_API_KEY || "api_0YozI61BHB1dKxeff9vbo30K3bvDvf3K", // API密钥优先从环境变量读取，否则使用配置文件中的值
-	baseUrl: "https://api.umami.is", // Umami Cloud API地址
-	scripts: `
-<script defer src="https://cloud.umami.is/script.js" data-website-id="8952bfd6-95ab-4a99-819e-cf1cda1c2814"></script>
-  `.trim(), // 上面填你要插入的Script,不用再去Layout中插入
-} as const;
+// umamiConfig相关配置已移动至astro.config.mjs中,统计脚本请自行在Layout.astro文件的<head>中插入
