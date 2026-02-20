@@ -57,15 +57,7 @@ export function remarkContent() {
 
 			// 累加文本
 			if (node.type === "text" && node.value) {
-				fullText += node.value + " ";
-			}
-		});
-
-		// 针对 CJK (中日韩) 字符的字数统计优化
-		const cjkPattern =
-			/[\u4e00-\u9fa5\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af\u3000-\u303f\uff00-\uffef]/g;
-
-		const cjkMatches = fullText.match(cjkPattern);
+			fullText += `${node.value} `;
 		const cjkCount = cjkMatches ? cjkMatches.length : 0;
 
 		// 将 CJK 字符替换为空格，避免粘连，然后计算非 CJK (英文/数字) 单词数

@@ -1,19 +1,17 @@
 ---
 interface Props {
-	children: any;
+	children: unknown;
 	orientation?: "horizontal" | "vertical";
-	class?: string;
 }
 
 const {
 	children,
 	orientation = "horizontal",
-	class: customClass = "",
 } = Astro.props;
 ---
 
 <div 
-  class={`custom-scrollbar ${orientation === "horizontal" ? "horizontal-scrollbar" : "vertical-scrollbar"} ${customClass}`}
+  class={`custom-scrollbar ${orientation === "horizontal" ? "horizontal-scrollbar" : "vertical-scrollbar"}`}
   data-orientation={orientation}
 >
   {children}

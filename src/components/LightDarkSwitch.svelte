@@ -1,9 +1,9 @@
 <script lang="ts">
-import { DARK_MODE, LIGHT_MODE, DEFAULT_THEME } from "@constants/constants";
-import Icon from "@iconify/svelte";
-import { getStoredTheme, setTheme } from "@utils/setting-utils";
-import type { LIGHT_DARK_MODE } from "@/types/config.ts";
 import { onMount } from "svelte";
+import Icon from "@iconify/svelte";
+import type { LIGHT_DARK_MODE } from "@/types/config.ts";
+import { DARK_MODE, LIGHT_MODE, DEFAULT_THEME } from "@constants/constants";
+import { getStoredTheme, setTheme } from "@utils/setting-utils";
 
 const seq: LIGHT_DARK_MODE[] = [LIGHT_MODE, DARK_MODE];
 let mode: LIGHT_DARK_MODE = $state(DEFAULT_THEME);

@@ -1,8 +1,8 @@
 <script lang="ts">
 import { onMount } from "svelte";
 
-import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
+import I18nKey from "../i18n/i18nKey";
 
 export let tags: string[];
 export let categories: string[];

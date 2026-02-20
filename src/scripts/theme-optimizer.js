@@ -216,7 +216,7 @@ class ThemeOptimizer {
 
 			// 检查是否已存在这些规则，如果不存在则添加
 			if (!content.includes(".is-theme-transitioning .expressive-code")) {
-				content += "\n" + hideRule + "\n" + showRule;
+				content += `\n${hideRule}\n${showRule}`;
 				this.tempStyleSheet.textContent = content;
 			}
 		}
