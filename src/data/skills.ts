@@ -195,8 +195,7 @@ export const skillsData: Skill[] = [
 	{
 		id: "java",
 		name: "Java",
-		description:
-			"企业级应用开发的主流编程语言，跨平台、面向对象。",
+		description: "企业级应用开发的主流编程语言，跨平台、面向对象。",
 		icon: "logos:java",
 		category: "backend",
 		level: "beginner",
@@ -255,8 +254,7 @@ export const skillsData: Skill[] = [
 	{
 		id: "c",
 		name: "C",
-		description:
-			"底层系统编程语言，操作系统和嵌入式系统开发的基础。",
+		description: "底层系统编程语言，操作系统和嵌入式系统开发的基础。",
 		icon: "logos:c",
 		category: "backend",
 		level: "beginner",
@@ -303,8 +301,7 @@ export const skillsData: Skill[] = [
 	{
 		id: "php",
 		name: "PHP",
-		description:
-			"广泛使用的服务器端脚本语言，特别适合Web开发。",
+		description: "广泛使用的服务器端脚本语言，特别适合Web开发。",
 		icon: "logos:php",
 		category: "backend",
 		level: "beginner",
@@ -425,8 +422,7 @@ export const skillsData: Skill[] = [
 	{
 		id: "git",
 		name: "Git",
-		description:
-			"分布式版本控制系统，代码管理和团队协作必备工具。",
+		description: "分布式版本控制系统，代码管理和团队协作必备工具。",
 		icon: "logos:git-icon",
 		category: "tools",
 		level: "beginner",
@@ -436,8 +432,7 @@ export const skillsData: Skill[] = [
 	{
 		id: "vscode",
 		name: "VS Code",
-		description:
-			"轻量级但功能强大的代码编辑器，丰富的插件生态。",
+		description: "轻量级但功能强大的代码编辑器，丰富的插件生态。",
 		icon: "logos:visual-studio-code",
 		category: "tools",
 		level: "beginner",
@@ -589,8 +584,7 @@ export const skillsData: Skill[] = [
 	{
 		id: "linux",
 		name: "Linux",
-		description:
-			"开源操作系统，服务器部署和开发环境的首选。",
+		description: "开源操作系统，服务器部署和开发环境的首选。",
 		icon: "logos:linux-tux",
 		category: "tools",
 		level: "intermediate",

@@ -61,7 +61,7 @@ const localAnimeList: AnimeItem[] = [
 		studio: "V1Studio",
 		link: "https://www.bilibili.com/bangumi/media/md28228775",
 		progress: 1246,
-		totalEpisodes: 	1246,
+		totalEpisodes: 1246,
 		startDate: "1996-01",
 		endDate: "2025-10",
 	},

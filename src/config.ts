@@ -1,4 +1,4 @@
- import type {
+import type {
 	AnnouncementConfig,
 	CommentConfig,
 	ExpressiveCodeConfig,
@@ -291,12 +291,12 @@ export const navBarConfig: NavBarConfig = {
 			icon: "material-symbols:person",
 			children: [
 				{
-					name: "Anime",		//动画
+					name: "Anime", //动画
 					url: "/anime/",
 					icon: "material-symbols:movie",
 				},
 				{
-					name: "Diary",		//日记
+					name: "Diary", //日记
 					url: "/diary/",
 					icon: "material-symbols:book",
 				},
