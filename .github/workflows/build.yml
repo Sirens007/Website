@@ -74,3 +74,4 @@ jobs:
               run: pnpm astro build
               env:
                   ENABLE_CONTENT_SYNC: false
+
