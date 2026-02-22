@@ -165,7 +165,7 @@ if (siteConfig.font) {
 <!doctype html>
 <html
 	lang={siteLang}
-	class="bg-[var(--page-bg)] text-[14px] md:text-[16px]"
+	class="bg-(--page-bg) text-[14px] md:text-[16px]"
 	data-overlayscrollbars-initialize
 >
 	<head>
@@ -378,7 +378,7 @@ if (siteConfig.font) {
 	<body
 		class="min-h-screen"
 		class:list={[
-			{ "lg:is-home": isHomePage, "enable-banner": enableBanner },
+			{ "is-home": isHomePage, "enable-banner": enableBanner },
 		]}
 		style={bodyFontFamily ? `font-family: ${bodyFontFamily};` : ""}
 		data-overlayscrollbars-initialize
@@ -415,28 +415,29 @@ if (siteConfig.font) {
 		"banner-height": `${BANNER_HEIGHT}vh`,
 	}}
 >
-	@tailwind components;
+	@reference "tailwindcss";
+
 	@layer components {
 		.enable-banner.is-home #banner-wrapper {
-			@apply h-[var(--banner-height-home)] translate-y-[var(--banner-height-extend)];
+			@apply xl:h-(--banner-height-home) xl:translate-y-[var(--banner-height-extend)];
 		}
 		.enable-banner #banner-wrapper {
-			@apply h-[var(--banner-height-home)];
+			@apply xl:h-[var(--banner-height-home)];
 		}
 		.enable-banner.is-home #banner {
-			@apply h-[var(--banner-height-home)] translate-y-0;
+			@apply xl:h-(--banner-height-home) xl:translate-y-0;
 		}
 		.enable-banner #banner {
-			@apply h-[var(--banner-height-home)] translate-y-[var(--bannerOffset)];
+			@apply xl:h-(--banner-height-home) xl:translate-y-[var(--bannerOffset)];
 		}
 		.enable-banner.is-home #main-grid {
-			@apply translate-y-[var(--banner-height-extend)];
+			@apply xl:translate-y-[var(--banner-height-extend)];
 		}
 		.enable-banner #top-row {
-			@apply h-[calc(var(--banner-height-home)_-_4.5rem)] transition-all duration-300;
+			@apply xl:h-[calc(var(--banner-height-home)-4.5rem)] transition-all duration-300;
 		}
 		.enable-banner.is-home #sidebar-sticky {
-			@apply top-[calc(1rem_-_var(--banner-height-extend))];
+			@apply xl:top-[calc(1rem_-_var(--banner-height-extend))];
 		}
 		.navbar-hidden {
 			@apply opacity-0 -translate-y-16;

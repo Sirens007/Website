@@ -61,7 +61,7 @@ const hasChildren = children.length > 0;
 				</button>
 
 				<div class="dropdown-menu" data-dropdown-menu>
-					<div class="dropdown-content">
+					<div class="dropdown-content bg-[var(--float-panel-bg)] rounded-[var(--radius-large)] shadow-xl dark:shadow-none border border-black/5 dark:border-white/10 p-2 min-w-[12rem]">
 						{children.map((child) => (
 							<a
 								href={
@@ -73,7 +73,7 @@ const hasChildren = children.length > 0;
 										? "noopener noreferrer"
 										: null
 								}
-								class="dropdown-item"
+								class="dropdown-item flex items-center justify-between px-4 py-2.5 text-black/75 dark:text-white/75 hover:text-[var(--primary)] hover:bg-[var(--btn-plain-bg-hover)] transition-colors duration-150 font-medium rounded-lg"
 								aria-label={child.name}
 							>
 								<div class="flex items-center">
@@ -120,6 +120,8 @@ const hasChildren = children.length > 0;
 </div>
 
 <style>
+	@reference "tailwindcss";
+
 	.dropdown-container {
 		@apply relative;
 	}
@@ -138,14 +140,6 @@ const hasChildren = children.length > 0;
 	.dropdown-container:focus-within .dropdown-arrow,
 	.dropdown-trigger[aria-expanded="true"] .dropdown-arrow {
 		@apply rotate-180;
-	}
-
-	.dropdown-content {
-		@apply bg-[var(--float-panel-bg)] rounded-[var(--radius-large)] shadow-xl dark:shadow-none border border-black/5 dark:border-white/10 p-2 min-w-[12rem];
-	}
-
-	.dropdown-item {
-		@apply flex items-center justify-between px-4 py-2.5 text-black/75 dark:text-white/75 hover:text-[var(--primary)] hover:bg-[var(--btn-plain-bg-hover)] transition-colors duration-150 font-medium rounded-lg;
 	}
 
 	@media (max-width: 767px) {
