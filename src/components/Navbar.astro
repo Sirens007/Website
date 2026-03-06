@@ -53,13 +53,13 @@ const iconSrc = rawIcon.match(/^(http|https|\/\/)/) ? rawIcon : url(rawIcon);
                     ) : (
                         <>
                             <img src={iconSrc} alt={siteConfig.navbarTitle.text} class="h-7 w-7 mr-2 object-contain" loading="lazy" />
-                            <span class="dark:text-white text-black">{siteConfig.navbarTitle.text}</span>
+                            <span>{siteConfig.navbarTitle.text}</span>
                         </>
                     )
                 ) : (
                     <>
                         <Icon name="material-symbols:home-pin-outline" class="text-[1.75rem] mr-2" />
-                        <span class="dark:text-white text-black">{siteConfig.title}</span>
+                        <span>{siteConfig.title}</span>
                     </>
                 )}
             </div>

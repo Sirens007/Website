@@ -17,10 +17,13 @@
 
 /* Migrate from v3 config */
 @theme {
-  --font-sans: "Roboto", "sans-serif", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:
+    'Roboto', 'sans-serif', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   --breakpoint-md: 768px;
   --breakpoint-lg: 1280px;
+  --breakpoint-xl: 1920px;
 }
 
 /* Migrated css */
@@ -387,6 +390,12 @@ html {
   }
   .text-75 {
     @apply text-black/75 dark:text-white/75;
+  }
+  .text-70 {
+    @apply text-black/70 dark:text-white/70;
+  }
+  .text-60 {
+    @apply text-black/60 dark:text-white/60;
   }
   .text-50 {
     @apply text-black/50 dark:text-white/50;
