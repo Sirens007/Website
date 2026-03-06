@@ -486,11 +486,15 @@ export const footerConfig: FooterConfig = {
     gap:6px;
     opacity:.65;
   ">
-    <a href="https://beian.miit.gov.cn/"
+
+    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=45031202000488"
        target="_blank"
        rel="noopener"
-       style="color:inherit;text-decoration:none;">
-      桂ICP备2026000608号
+       style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;">
+      <img src="/beian.png"
+           alt="公安备案图标"
+           style="height:14px;margin-right:4px;vertical-align:middle;">
+      桂公网安备45031202000488号
     </a>
   </div>
 </footer>
