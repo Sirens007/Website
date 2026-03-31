@@ -13,9 +13,13 @@ if (!siteConfig.featurePages.skills) {
 	return Astro.redirect("/404/");
 }
 
+<<<<<<< HEAD
 const categories = [
 	...new Set(skillsData.map((skill) => skill.category)),
 ];
+=======
+const categories = [...new Set(skillsData.map((skill) => skill.category))];
+>>>>>>> upstream/master
 
 const getCategoryText = (category: string) => {
 	switch (category) {
@@ -93,9 +97,13 @@ const subtitle = i18n(I18nKey.skillsSubtitle);
 			</div>
 
 			<div id="skills-grid" class="grid gap-6 items-start">
+<<<<<<< HEAD
 				{skillsData.map((skill) => (
 					<SkillCard skill={skill} />
 				))}
+=======
+				{skillsData.map((skill) => <SkillCard skill={skill} />)}
+>>>>>>> upstream/master
 			</div>
 
 			<div id="no-results" class="hidden text-center py-16">

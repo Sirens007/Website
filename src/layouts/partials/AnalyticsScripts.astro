@@ -54,7 +54,11 @@ const clarityEnable =
 					event: "gtm.js",
 				});
 				const f = d.getElementsByTagName(s)[0],
+<<<<<<< HEAD
 				j = d.createElement(s);
+=======
+					j = d.createElement(s);
+>>>>>>> upstream/master
 				j.async = true;
 				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i;
 				f.parentNode.insertBefore(j, f);
@@ -78,7 +82,17 @@ const clarityEnable =
 		}
 
 		// 仅在用户交互后加载分析脚本，减少初始页面加载负担
+<<<<<<< HEAD
 		const events = ["scroll", "mousemove", "keydown", "touchstart", "click"];
+=======
+		const events = [
+			"scroll",
+			"mousemove",
+			"keydown",
+			"touchstart",
+			"click",
+		];
+>>>>>>> upstream/master
 		let loaded = false;
 
 		function onInteraction() {
@@ -93,7 +107,14 @@ const clarityEnable =
 		}
 
 		events.forEach(function (event) {
+<<<<<<< HEAD
 			window.addEventListener(event, onInteraction, { once: true, passive: true });
+=======
+			window.addEventListener(event, onInteraction, {
+				once: true,
+				passive: true,
+			});
+>>>>>>> upstream/master
 		});
 
 		// 备用：如果用户 10 秒内没有交互，则在 idle 时加载

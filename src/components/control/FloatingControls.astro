@@ -278,9 +278,13 @@ const { headings = [] } = Astro.props;
 		);
 
 		if (visibleCount >= totalItems) {
+<<<<<<< HEAD
 			document.documentElement.style.removeProperty(
 				"--fab-group-bottom",
 			);
+=======
+			document.documentElement.style.removeProperty("--fab-group-bottom");
+>>>>>>> upstream/master
 		} else {
 			const baseBottom = parseFloat(
 				getComputedStyle(document.documentElement).getPropertyValue(

@@ -22,9 +22,15 @@ const diaryData: DiaryItem[] = [
 	{
 		id: 2,
 		content:
+<<<<<<< HEAD
 			"决赛圈见~",
 		date: "2025-10-22T10:30:00Z",
 		images: ["/images/diary/yunwei.png", "/images/diary/yunwei2.png"],
+=======
+			"The falling speed of cherry blossoms is five centimeters per second!",
+		date: "2025-01-15T10:30:00Z",
+		images: ["/images/diary/sakura.jpg", "/images/diary/1.webp"],
+>>>>>>> upstream/master
 	},
 ];
 

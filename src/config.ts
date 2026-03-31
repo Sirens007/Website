@@ -1,4 +1,4 @@
-import type {
+﻿import type {
 	AnnouncementConfig,
 	CommentConfig,
 	ExpressiveCodeConfig,
@@ -55,7 +55,11 @@ export const siteConfig: SiteConfig = {
 		// 显示模式："text-icon" 显示图标+文本，"logo" 仅显示Logo
 		mode: "text-icon",
 		// 顶栏标题文本
+<<<<<<< HEAD
 		text: "Sirens",
+=======
+		text: "MizukiUI",
+>>>>>>> upstream/master
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.webp
 		icon: "assets/home/home.webp",
 		// 网站Logo图片路径
@@ -145,7 +149,11 @@ export const siteConfig: SiteConfig = {
 		position: "center", // 等同于 object-position，仅支持 'top', 'center', 'bottom'。默认为 'center'
 
 		carousel: {
+<<<<<<< HEAD
 			enable: false, // 为 true 时：为多张图片启用轮播。为 false 时：从数组中随机显示一张图片
+=======
+			enable: true, // 为 true 时：为多张图片启用轮播。为 false 时：从数组中随机显示一张图片
+>>>>>>> upstream/master
 			interval: 3, // 轮播间隔时间（秒）
 		},
 
@@ -444,7 +452,11 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 };
 
 export const commentConfig: CommentConfig = {
+<<<<<<< HEAD
 	enable: true, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
+=======
+	enable: false, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
+>>>>>>> upstream/master
 	system: "twikoo", // 评论系统选择: "twikoo" | "giscus"
 	twikoo: {
 		envId: "https://twikoo-sirens.netlify.app/.netlify/functions/twikoo",
