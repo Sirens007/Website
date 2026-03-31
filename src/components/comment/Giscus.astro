@@ -16,10 +16,6 @@ const config = {
 <script is:inline define:vars={{ config }}>
 	(function () {
 		const GISCUS_CONTAINER_ID = "giscus-container";
-<<<<<<< HEAD
-		const SCROLL_PROTECTION_URL = "/scroll-protection.js";
-=======
->>>>>>> upstream/master
 		const ROOT_MARGIN = "200px";
 
 		let observer = null;
@@ -31,39 +27,12 @@ const config = {
 				: pathname;
 		}
 
-<<<<<<< HEAD
-		async function loadScrollProtection() {
-			return new Promise((resolve, reject) => {
-				if (document.getElementById("scroll-protection-loaded")) {
-					resolve();
-					return;
-				}
-				const script = document.createElement("script");
-				script.src = SCROLL_PROTECTION_URL;
-				script.onload = () => {
-					const marker = document.createElement("div");
-					marker.id = "scroll-protection-loaded";
-					document.body.appendChild(marker);
-					resolve();
-				};
-				script.onerror = reject;
-				document.head.appendChild(script);
-			});
-		}
-
-=======
->>>>>>> upstream/master
 		async function initGiscus() {
 			const container = document.getElementById(GISCUS_CONTAINER_ID);
 			if (!container) {
 				return;
 			}
 
-<<<<<<< HEAD
-			await loadScrollProtection();
-
-=======
->>>>>>> upstream/master
 			let theme = config.theme;
 			if (theme === "preferred_color_scheme") {
 				const isDark =

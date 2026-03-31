@@ -19,10 +19,6 @@ const config = {
 <script is:inline define:vars={{ config }}>
 	(function () {
 		const TWIKOO_CONTAINER_ID = "twikoo-container";
-<<<<<<< HEAD
-		const SCROLL_PROTECTION_URL = "/scroll-protection.js";
-=======
->>>>>>> upstream/master
 		const TWIKOO_SCRIPT_URL = "/assets/js/twikoo.all.min.js";
 		const ROOT_MARGIN = "200px";
 
@@ -44,28 +40,6 @@ const config = {
 			};
 		}
 
-<<<<<<< HEAD
-		async function loadScrollProtection() {
-			return new Promise((resolve, reject) => {
-				if (document.getElementById("scroll-protection-loaded")) {
-					resolve();
-					return;
-				}
-				const script = document.createElement("script");
-				script.src = SCROLL_PROTECTION_URL;
-				script.onload = () => {
-					const marker = document.createElement("div");
-					marker.id = "scroll-protection-loaded";
-					document.body.appendChild(marker);
-					resolve();
-				};
-				script.onerror = reject;
-				document.head.appendChild(script);
-			});
-		}
-
-=======
->>>>>>> upstream/master
 		async function loadTwikooScript() {
 			if (
 				twikooLoaded ||
@@ -73,10 +47,6 @@ const config = {
 			) {
 				return;
 			}
-<<<<<<< HEAD
-			await loadScrollProtection();
-=======
->>>>>>> upstream/master
 			return new Promise((resolve, reject) => {
 				const script = document.createElement("script");
 				script.id = "twikoo-script-loaded";

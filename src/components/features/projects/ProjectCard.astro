@@ -75,13 +75,9 @@ const getStatusText = (status: string) => {
 			</span>
 		</div>
 
-<<<<<<< HEAD
-		<p class="text-sm text-black/60 dark:text-white/60 mb-4 line-clamp-2 min-h-[2.5rem]">
-=======
 		<p
 			class="text-sm text-black/60 dark:text-white/60 mb-4 line-clamp-2 min-h-[2.5rem]"
 		>
->>>>>>> upstream/master
 			{project.description}
 		</p>
 
@@ -105,35 +101,6 @@ const getStatusText = (status: string) => {
 		{
 			(hasVisitUrl || hasSourceCode) && (
 				<div class="flex gap-2">
-<<<<<<< HEAD
-					{
-						hasVisitUrl && (
-							<a
-								href={project.visitUrl!}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="btn-regular flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium"
-							>
-								<iconify-icon icon="material-symbols:open-in-new" width="16" height="16"></iconify-icon>
-								{i18n(I18nKey.projectsVisit)}
-							</a>
-						)
-					}
-					{
-						hasSourceCode && (
-							<a
-								href={project.sourceCode!}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="btn-regular flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium"
-								style={hasVisitUrl ? "" : "flex: 1;"}
-							>
-								<iconify-icon icon="mdi:github" width="16" height="16"></iconify-icon>
-								{!hasVisitUrl && "GitHub"}
-							</a>
-						)
-					}
-=======
 					{hasVisitUrl && (
 						<a
 							href={project.visitUrl!}
@@ -165,20 +132,15 @@ const getStatusText = (status: string) => {
 							{!hasVisitUrl && "GitHub"}
 						</a>
 					)}
->>>>>>> upstream/master
 				</div>
 			)
 		}
 	</div>
 
-<<<<<<< HEAD
-	<div class="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-=======
 	<div
 		class="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
 	>
 	</div>
->>>>>>> upstream/master
 </div>
 
 <style>
@@ -202,16 +164,6 @@ const getStatusText = (status: string) => {
 		}
 	}
 
-<<<<<<< HEAD
-	.project-card:nth-child(1) { animation-delay: 0.05s; }
-	.project-card:nth-child(2) { animation-delay: 0.1s; }
-	.project-card:nth-child(3) { animation-delay: 0.15s; }
-	.project-card:nth-child(4) { animation-delay: 0.2s; }
-	.project-card:nth-child(5) { animation-delay: 0.25s; }
-	.project-card:nth-child(6) { animation-delay: 0.3s; }
-	.project-card:nth-child(7) { animation-delay: 0.35s; }
-	.project-card:nth-child(8) { animation-delay: 0.4s; }
-=======
 	.project-card:nth-child(1) {
 		animation-delay: 0.05s;
 	}
@@ -236,7 +188,6 @@ const getStatusText = (status: string) => {
 	.project-card:nth-child(8) {
 		animation-delay: 0.4s;
 	}
->>>>>>> upstream/master
 
 	.line-clamp-2 {
 		display: -webkit-box;

@@ -187,13 +187,9 @@
 		btn.addEventListener("click", (ev) => {
 			ev.stopPropagation();
 			const svg = element.querySelector("svg");
-<<<<<<< HEAD
-			if (!svg) {return;}
-=======
 			if (!svg) {
 				return;
 			}
->>>>>>> upstream/master
 			openFullscreen(svg);
 		});
 		element.appendChild(btn);
