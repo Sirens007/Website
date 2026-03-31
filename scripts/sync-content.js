@@ -57,12 +57,27 @@ if (!fs.existsSync(CONTENT_DIR)) {
 
 	if (fs.existsSync(path.join(CONTENT_DIR, ".git"))) {
 		try {
-			console.log("正在拉取最新内容...");
-			execSync("git pull --allow-unrelated-histories", {
-				stdio: "inherit",
-				cwd: CONTENT_DIR,
-			});
-			console.log("内容更新成功");
+		console.log("正在同步远程内容（强制模式）...");
+
+		// Step 1: 更新远程引用（解决“看不到远程更新”）
+		execSync("git fetch --all", {
+			stdio: "inherit",
+			cwd: CONTENT_DIR,
+		});
+
+		// Step 2: 确保在正确分支（防止在错误分支）
+		execSync("git checkout master", {
+			stdio: "inherit",
+			cwd: CONTENT_DIR,
+		});
+
+		// Step 3: 强制对齐远程（核心）
+		execSync("git reset --hard origin/master", {
+			stdio: "inherit",
+			cwd: CONTENT_DIR,
+		});
+
+		console.log("内容同步成功（已强制对齐远程）");
 		} catch (error) {
 			console.warn("内容更新失败：", error.message);
 		}
