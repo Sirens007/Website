@@ -17,11 +17,12 @@ const diaryData: DiaryItem[] = [
 		id: 1,
 		content: "纪念第一个补天漏洞啦！",
 		date: "2025-08-28T08:00:00Z",
-		images: ["/images/diary/butian.png", "/images/diary/butian2.png"],
+		images: ["/images/diary/butian.png","/images/diary/butian2.png"],
 	},
 	{
 		id: 2,
-		content: "决赛圈见~",
+		content:
+			"决赛圈见~",
 		date: "2025-10-22T10:30:00Z",
 		images: ["/images/diary/yunwei.png", "/images/diary/yunwei2.png"],
 	},
