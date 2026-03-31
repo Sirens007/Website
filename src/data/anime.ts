@@ -1,5 +1,5 @@
 // 本地番剧数据配置
-export type AnimeItem = {
+export interface AnimeItem {
 	title: string;
 	status: "watching" | "completed" | "planned";
 	rating: number;
@@ -14,7 +14,7 @@ export type AnimeItem = {
 	totalEpisodes: number;
 	startDate: string;
 	endDate: string;
-};
+}
 
 const localAnimeList: AnimeItem[] = [
 	{
@@ -28,7 +28,7 @@ const localAnimeList: AnimeItem[] = [
 		genre: ["奇幻", "战斗"],
 		studio: "BeDream",
 		link: "https://www.bilibili.com/bangumi/media/md28340128",
-		progress: 22,
+		progress: 24,
 		totalEpisodes: 24,
 		startDate: "2025-04",
 		endDate: "2025-09",
@@ -60,43 +60,11 @@ const localAnimeList: AnimeItem[] = [
 		genre: ["推理", "悬疑"],
 		studio: "V1Studio",
 		link: "https://www.bilibili.com/bangumi/media/md28228775",
-		progress: 1246,
-		totalEpisodes: 	1246,
+		progress: 1253,
+		totalEpisodes: 	1253,
 		startDate: "1996-01",
 		endDate: "2025-10",
 	},
-	// {
-	// 	title: "Is the Order a Rabbit?",
-	// 	status: "planned",
-	// 	rating: 9.0,
-	// 	cover: "/assets/anime/tz1.webp",
-	// 	description: "A group of girls' warm daily life",
-	// 	episodes: "12 episodes",
-	// 	year: "2014",
-	// 	genre: ["Daily life", "Healing"],
-	// 	studio: "White Fox",
-	// 	link: "https://www.bilibili.com/bangumi/media/md2762",
-	// 	progress: 12,
-	// 	totalEpisodes: 12,
-	// 	startDate: "2014-04",
-	// 	endDate: "2014-06",
-	// },
-	// {
-	// 	title: "The Secret of the Magic Girl",
-	// 	status: "watching",
-	// 	rating: 9.0,
-	// 	cover: "/assets/anime/cmmn.webp",
-	// 	description: "Muli, Muli!",
-	// 	episodes: "12 episodes",
-	// 	year: "2024",
-	// 	genre: ["Daily life", "Healing", "Magic"],
-	// 	studio: "C2C",
-	// 	link: "https://www.bilibili.com/bangumi/media/md26625039",
-	// 	progress: 8,
-	// 	totalEpisodes: 12,
-	// 	startDate: "2025-07",
-	// 	endDate: "2025-10",
-	// },
 ];
 
 export default localAnimeList;

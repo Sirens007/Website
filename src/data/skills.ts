@@ -1,5 +1,5 @@
-// 技能数据配置文件
-// 用于管理技能展示页面的数据
+// Skill data configuration file
+// Used to manage data for the skill display page
 
 export interface Skill {
 	id: string;
@@ -12,9 +12,9 @@ export interface Skill {
 		years: number;
 		months: number;
 	};
-	projects?: string[]; // 相关项目ID
+	projects?: string[]; // Related project IDs
 	certifications?: string[];
-	color?: string; // 技能卡片主题色
+	color?: string; // Skill card theme color
 }
 
 export const skillsData: Skill[] = [
@@ -683,50 +683,3 @@ export const skillsData: Skill[] = [
 	// 	color: "#17202C",
 	// },
 ];
-
-// Get skill statistics
-export const getSkillStats = () => {
-	const total = skillsData.length;
-	const byLevel = {
-		beginner: skillsData.filter((s) => s.level === "beginner").length,
-		intermediate: skillsData.filter((s) => s.level === "intermediate")
-			.length,
-		advanced: skillsData.filter((s) => s.level === "advanced").length,
-		expert: skillsData.filter((s) => s.level === "expert").length,
-	};
-	const byCategory = {
-		frontend: skillsData.filter((s) => s.category === "frontend").length,
-		backend: skillsData.filter((s) => s.category === "backend").length,
-		database: skillsData.filter((s) => s.category === "database").length,
-		tools: skillsData.filter((s) => s.category === "tools").length,
-		other: skillsData.filter((s) => s.category === "other").length,
-	};
-
-	return { total, byLevel, byCategory };
-};
-
-// Get skills by category
-export const getSkillsByCategory = (category?: string) => {
-	if (!category || category === "all") {
-		return skillsData;
-	}
-	return skillsData.filter((s) => s.category === category);
-};
-
-// Get advanced skills
-export const getAdvancedSkills = () => {
-	return skillsData.filter(
-		(s) => s.level === "advanced" || s.level === "expert",
-	);
-};
-
-// Calculate total years of experience
-export const getTotalExperience = () => {
-	const totalMonths = skillsData.reduce((total, skill) => {
-		return total + skill.experience.years * 12 + skill.experience.months;
-	}, 0);
-	return {
-		years: Math.floor(totalMonths / 12),
-		months: totalMonths % 12,
-	};
-};

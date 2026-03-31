@@ -1,27 +1,4 @@
-// Timeline data configuration file
-// Used to manage data for the timeline page
-
-export interface TimelineItem {
-	id: string;
-	title: string;
-	description: string;
-	type: "education" | "work" | "project" | "achievement";
-	startDate: string;
-	endDate?: string; // If empty, it means current
-	location?: string;
-	organization?: string;
-	position?: string;
-	skills?: string[];
-	achievements?: string[];
-	links?: {
-		name: string;
-		url: string;
-		type: "website" | "certificate" | "project" | "other";
-	}[];
-	icon?: string; // Iconify icon name
-	color?: string;
-	featured?: boolean;
-}
+import type { TimelineItem } from "../components/features/timeline/types";
 
 export const timelineData: TimelineItem[] = [
 	{
@@ -155,26 +132,6 @@ export const timelineData: TimelineItem[] = [
 		featured: true
 	},
 	{
-		id: 'Cybersecurity Attack and Defense Competition',
-		title: '第三届“古剑山”全国大学生网络攻防大赛',
-		description: '负责Web，Crypto方向题目的flag获取，最终荣获省级三等奖',
-		type: 'achievement',
-		startDate: '2025-11-29',
-		endDate: '2025-11-29',
-		location: '线上',
-		organization: '中共重庆市委网络安全和信息化委员办公室、重庆移通学院',
-		position: 'Web、crypto方向',
-		skills: ['PHP反序列化', 'Python', 'Linux', 'RSA', 'ssrf'],
-		achievements: [
-			'荣获第三届“古剑山”全国大学生网络攻防大赛省级三等奖',
-			'积累了加密算法绕过与身份认证测试',
-			'带领团队拿到web、crypto方向题目的flag'
-		],
-		icon: 'material-symbols:verified',
-		color: '#25eb7eff',
-		featured: true
-	},
-	{
 		id: 'information-security-competition',
 		title: '第22届全国大学生信息安全竞赛',
 		description: '负责Web方向题目的flag获取，最终荣获信息安全竞赛国家级三等奖',
@@ -194,6 +151,24 @@ export const timelineData: TimelineItem[] = [
 		color: '#2563EB',
 		featured: true
 	},
+	// {
+	// 	id: "programming-contest",
+	// 	title: "University Programming Contest",
+	// 	description:
+	// 		"Participated in a programming contest held by the university, improving algorithm and programming skills.",
+	// 	type: "achievement",
+	// 	startDate: "2023-10-20",
+	// 	location: "Beijing Institute of Technology",
+	// 	organization: "School of Computer Science",
+	// 	skills: ["C++", "Algorithms", "Data Structures"],
+	// 	achievements: [
+	// 		"Won third prize in university contest",
+	// 		"Improved algorithmic thinking ability",
+	// 		"Strengthened programming fundamentals",
+	// 	],
+	// 	icon: "material-symbols:emoji-events",
+	// 	color: "#7C3AED",
+	// },
 	{
 		id: 'edusrc-first-vulnerability',
 		title: '第一次挖到教育SRC漏洞',
@@ -211,7 +186,6 @@ export const timelineData: TimelineItem[] = [
 		],
 		icon: 'mdi:shield-search',
 		color: '#10B981',
-		featured: true
 	},
 	{
 		id: "english-certificate",
@@ -252,71 +226,3 @@ export const timelineData: TimelineItem[] = [
 		color: '#7C3AED'
 	},
 ];
-
-// Get timeline statistics
-export const getTimelineStats = () => {
-	const total = timelineData.length;
-	const byType = {
-		education: timelineData.filter((item) => item.type === "education")
-			.length,
-		work: timelineData.filter((item) => item.type === "work").length,
-		project: timelineData.filter((item) => item.type === "project").length,
-		achievement: timelineData.filter((item) => item.type === "achievement")
-			.length,
-	};
-
-	return { total, byType };
-};
-
-// Get timeline items by type
-export const getTimelineByType = (type?: string) => {
-	if (!type || type === "all") {
-		return timelineData.sort(
-			(a, b) =>
-				new Date(b.startDate).getTime() -
-				new Date(a.startDate).getTime(),
-		);
-	}
-	return timelineData
-		.filter((item) => item.type === type)
-		.sort(
-			(a, b) =>
-				new Date(b.startDate).getTime() -
-				new Date(a.startDate).getTime(),
-		);
-};
-
-// Get featured timeline items
-export const getFeaturedTimeline = () => {
-	return timelineData
-		.filter((item) => item.featured)
-		.sort(
-			(a, b) =>
-				new Date(b.startDate).getTime() -
-				new Date(a.startDate).getTime(),
-		);
-};
-
-// Get current ongoing items
-export const getCurrentItems = () => {
-	return timelineData.filter((item) => !item.endDate);
-};
-
-// Calculate total work experience
-export const getTotalWorkExperience = () => {
-	const workItems = timelineData.filter((item) => item.type === "work");
-	let totalMonths = 0;
-
-	workItems.forEach((item) => {
-		const startDate = new Date(item.startDate);
-		const endDate = item.endDate ? new Date(item.endDate) : new Date();
-		const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
-		const diffMonths = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 30));
-		totalMonths += diffMonths;
-	});
-
-	return {
-		years: Math.floor(totalMonths / 12),
-		months: totalMonths % 12,
-	};
-};

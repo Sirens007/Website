@@ -20,14 +20,14 @@ export const friendsData: FriendItem[] = [
 		siteurl: "https://github.com/withastro/astro",
 		tags: ["Framework"],
 	},
-	{
-		id: 2,
-		title: "Mizuki Docs",
-		imgurl: "http://q.qlogo.cn/headimg_dl?dst_uin=3231515355&spec=640&img_type=jpg",
-		desc: "Mizuki User Manual",
-		siteurl: "https://docs.mizuki.mysqil.com",
-		tags: ["Docs"],
-	},
+	// {
+	// 	id: 2,
+	// 	title: "Mizuki Docs",
+	// 	imgurl: "http://q.qlogo.cn/headimg_dl?dst_uin=3231515355&spec=640&img_type=jpg",
+	// 	desc: "Mizuki User Manual",
+	// 	siteurl: "https://docs.mizuki.mysqil.com",
+	// 	tags: ["Docs"],
+	// },
 	{
 		id: 3,
 		title: "Vercel",
