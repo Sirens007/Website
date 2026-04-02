@@ -9,13 +9,11 @@ category: 开发
 draft: false
 ---
 
-
+图片来自于[菜鸟教程](https://www.runoob.com/java/java-collections.html)
 
 ## 1.List 引入
 
 ### 1.什么是 List
-![](../assets/LinkedList1.gif)
-图片来自于[菜鸟教程](https://www.runoob.com/java/java-collections.html)
 
 在了解 `ArrayList`即顺序表 (`Sequential List`) 与 `LinkedList`即 双向链表 (`Doubly Linked List`) 之前，有必要先明 `List`是什么。
 
