@@ -109,8 +109,8 @@ Get started quickly with our comprehensive documentation. Whether you're customi
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/matsuzaka-yuki/mizuki.git
-   cd mizuki
+   git clone https://github.com/LyraVoid/Mizuki.git
+   cd Mizuki
    ```
 
 2. **Install dependencies:**
@@ -355,15 +355,15 @@ This project is based on [Fuwari](https://github.com/saicaca/fuwari), which is l
 
 ## 🍀 Contributors
 
-Thanks to all contributors for their contributions to this project. If you have any questions or suggestions, please submit an [Issue](https://github.com/matsuzaka-yuki/Mizuki/issues) or [Pull Request](https://github.com/matsuzaka-yuki/Mizuki/pulls).
+Thanks to all contributors for their contributions to this project. If you have any questions or suggestions, please submit an [Issue](https://github.com/LyraVoid/Mizuki/issues) or [Pull Request](https://github.com/LyraVoid/Mizuki/pulls).
 
-<a href="https://github.com/matsuzaka-yuki/Mizuki/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=matsuzaka-yuki/Mizuki" />
+<a href="https://github.com/LyraVoid/Mizuki/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=LyraVoid/Mizuki" />
 </a>
 
 ## ⭐ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=matsuzaka-yuki/Mizuki&type=Date)](https://star-history.com/#matsuzaka-yuki/Mizuki&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=LyraVoid/Mizuki&type=Date)](https://star-history.com/#LyraVoid/Mizuki&Date)
 ---
 
 ⭐ If you find this project helpful, please consider giving it a star!

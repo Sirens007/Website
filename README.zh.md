@@ -110,8 +110,8 @@
 
 1. **克隆仓库：**
    ```bash
-   git clone https://github.com/matsuzaka-yuki/mizuki.git
-   cd mizuki
+   git clone https://github.com/LyraVoid/Mizuki.git
+   cd Mizuki
    ```
 
 2. **安装依赖：**
@@ -356,15 +356,15 @@ pnpm run sync-content
 
 ## 🍀 贡献者
 
-感谢以下贡献者对本项目做出的贡献，如有问题或建议，请提交 [Issue](https://github.com/matsuzaka-yuki/Mizuki/issues) 或 [Pull Request](https://github.com/matsuzaka-yuki/Mizuki/pulls)。
+感谢以下贡献者对本项目做出的贡献，如有问题或建议，请提交 [Issue](https://github.com/LyraVoid/Mizuki/issues) 或 [Pull Request](https://github.com/LyraVoid/Mizuki/pulls)。
 
-<a href="https://github.com/matsuzaka-yuki/Mizuki/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=matsuzaka-yuki/Mizuki" />
+<a href="https://github.com/LyraVoid/Mizuki/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=LyraVoid/Mizuki" />
 </a>
 
 ## ⭐ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=matsuzaka-yuki/Mizuki&type=Date)](https://star-history.com/#matsuzaka-yuki/Mizuki&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=LyraVoid/Mizuki&type=Date)](https://star-history.com/#LyraVoid/Mizuki&Date)
 ---
 
 ⭐ 如果您觉得这个项目有帮助，请考虑给它一个星标!

@@ -108,8 +108,8 @@
 
 1. **リポジトリをクローン：**
    ```bash
-   git clone https://github.com/matsuzaka-yuki/mizuki.git
-   cd mizuki
+   git clone https://github.com/LyraVoid/Mizuki.git
+   cd Mizuki
    ```
 
 2. **依存関係をインストール：**
@@ -354,15 +354,15 @@ pnpm run sync-content
 
 ## 🍀 コントリビューター
 
-このプロジェクトに貢献してくださったすべてのコントリビューターに感謝します。質問や提案がある場合は、[Issue](https://github.com/matsuzaka-yuki/Mizuki/issues)または[Pull Request](https://github.com/matsuzaka-yuki/Mizuki/pulls)を提出してください。
+このプロジェクトに貢献してくださったすべてのコントリビューターに感謝します。質問や提案がある場合は、[Issue](https://github.com/LyraVoid/Mizuki/issues)または[Pull Request](https://github.com/LyraVoid/Mizuki/pulls)を提出してください。
 
-<a href="https://github.com/matsuzaka-yuki/Mizuki/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=matsuzaka-yuki/Mizuki" />
+<a href="https://github.com/LyraVoid/Mizuki/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=LyraVoid/Mizuki" />
 </a>
 
 ## ⭐ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=matsuzaka-yuki/Mizuki&type=Date)](https://star-history.com/#matsuzaka-yuki/Mizuki&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=LyraVoid/Mizuki&type=Date)](https://star-history.com/#LyraVoid/Mizuki&Date)
 ---
 
 ⭐ このプロジェクトが役立つと思ったら、スターを付けることを検討してください！

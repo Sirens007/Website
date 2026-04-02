@@ -496,7 +496,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 
 export const footerConfig: FooterConfig = {
 	enable: true, // 是否启用Footer HTML注入功能
-	customHtml:`
+	customHtml: `
 <footer style="
   text-align:center;
   font-size:14px;
