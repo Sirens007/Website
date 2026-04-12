@@ -14724,7 +14724,7 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.7
 
-  stylehacks@5.1.1(postcss@8.5.8):
+  stylehacks@5.1.1(postcss@8.5.9):
     dependencies:
       browserslist: 4.28.2
       postcss: 8.5.9
