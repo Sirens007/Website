@@ -73,20 +73,20 @@ export const ja: Translation = {
 	[Key.animeStudio]: "スタジオ",
 	[Key.animeEmpty]: "アニメのデータはありません",
 	[Key.animeEmptyBangumi]:
-		"Bangumiの構成またはネットワークを接続を確認してください",
+		"Bangumiの構成またはネットワークの接続を確認してください",
 	[Key.animeEmptyBilibili]:
-		"Bilibiliの構成またはネットワーク接続を確認してください",
+		"Bilibiliの構成またはネットワークの接続を確認してください",
 	[Key.animeEmptyLocal]:
-		"src/data/anime.tsのファイルにアニメの情報を追加してください",
+		"src/data/anime.tsファイルにアニメの情報を追加してください",
 	[Key.animeConfigBilibili]:
-		"src/config.tsファイルでBilibili vmidを設定してください",
+		"src/config.tsファイルにBilibiliのvmidを設定してください",
 	[Key.animeConfigBangumi]:
-		"src/config.tsファイルでBangumi userIdを設定してください",
+		"src/config.tsファイルにBangumiのユーザーIDを設定してください",
 
 	// 日記ページ
 	[Key.diarySubtitle]: "いつでも、どこでも生活を共有",
-	[Key.diaryNoResults]: "一致する日記がありません",
-	[Key.diaryCount]: "件の日記",
+	[Key.diaryNoResults]: "一致するモーメントはありません",
+	[Key.diaryCount]: "件の日記のエントリー",
 
 	[Key.diaryTips]: "最新の30件の日記のエントリーのみを表示",
 	[Key.diaryMinutesAgo]: "分前",
@@ -113,7 +113,7 @@ export const ja: Translation = {
 	[Key.musicPlayerShuffle]: "シャッフル",
 	[Key.musicPlayerRepeat]: "リピート",
 	[Key.musicPlayerRepeatOne]: "1曲のみリピート",
-	[Key.musicPlayerVolume]: "音量コントロール",
+	[Key.musicPlayerVolume]: "音量のコントロール",
 	[Key.musicPlayerProgress]: "再生状況",
 	[Key.musicPlayerCover]: "カバー",
 	[Key.musicPlayerPlaylist]: "プレイリスト",
@@ -140,7 +140,7 @@ export const ja: Translation = {
 	[Key.albumsPhotoCount]: "件の写真",
 	[Key.albumsPhotosCount]: "件の写真",
 	[Key.albumsFilterAll]: "すべて",
-	[Key.albumsNoResults]: "一致するアルバムがありません",
+	[Key.albumsNoResults]: "一致するアルバムはありません",
 
 	// プロジェクトページ
 	[Key.projects]: "プロジェクト",
@@ -275,7 +275,7 @@ export const ja: Translation = {
 		"このコンテンツはパスワードで保護されています",
 	[Key.passwordProtectedDescription]:
 		"保護されたコンテンツを表示するにはパスワードを入力してください。",
-	[Key.postEncrypted]: "暗号化",
+	[Key.postEncrypted]: "暗号化済み",
 	[Key.passwordPlaceholder]: "パスワードを入力",
 	[Key.passwordUnlock]: "ロックを解除",
 	[Key.passwordUnlocking]: "ロックを解除中...",
@@ -353,7 +353,7 @@ export const ja: Translation = {
 	[Key.profileStatsVisits]: "訪問",
 	[Key.profileStatsUnavailable]: "統計は利用できません",
 
-	// ページビューの統計
+	// ページ閲覧の統計
 	[Key.pageViewsLoading]: "統計を読み込み中...",
 	[Key.pageViewsUnavailable]: "統計は利用できません",
 
@@ -361,9 +361,9 @@ export const ja: Translation = {
 	[Key.switchToGridMode]: "グリッド表示に切り替え",
 	[Key.switchToListMode]: "リスト表示に切り替え",
 
-	// 関連記事とランダム記事
-	[Key.relatedPosts]: "関連記事",
-	[Key.randomPosts]: "ランダム記事",
+	// 関連した投稿とランダムな投稿
+	[Key.relatedPosts]: "関連した投稿",
+	[Key.randomPosts]: "ランダムな投稿",
 	[Key.smartRecommend]: "スマート",
 	[Key.randomRecommend]: "ランダム",
 };
