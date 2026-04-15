@@ -3,7 +3,7 @@ title: Java 包装类、泛型与类型擦除
 published: 2026-03-13
 pinned: false
 description: "系统梳理 Java 包装类与泛型机制，从装箱拆箱到泛型用法，深入解析类型擦除原理与编译期行为，理解泛型的底层本质."
-image: ./d3.webp
+image: ./d3.png
 tags: ["数据结构", "Java"]
 category: 开发
 draft: false

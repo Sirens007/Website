@@ -3,7 +3,7 @@ title: 对顺序表以及双向链表的理解
 published: 2026-03-27
 pinned: false
 description: "结合 Java 源码与图解，通俗理解顺序表（ArrayList）与双向链表（LinkedList）的底层原理，并附带单链表常用核心操作的模拟实现."
-image: ./LinkedList1.gif
+image: ./LinkedList1.png
 tags: ["数据结构", "Java"]
 category: 开发
 draft: false
