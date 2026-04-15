@@ -40,7 +40,7 @@ jobs:
         env:
           # 如果需要启用内容分离,取消以下注释并配置
           ENABLE_CONTENT_SYNC: true
-          CONTENT_REPO_URL: ${{ secrets.CONTENT_REPO_URL }}
+          CONTENT_REPO_URL: "https://github.com/Sirens007/Website-Content.git"
           USE_SUBMODULE: true
       
       - name: Deploy to pages branch
