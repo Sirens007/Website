@@ -44,9 +44,6 @@ export default defineConfig({
 			umami: {
 				shareUrl:
 					"https://cloud.umami.is/analytics/eu/share/UDTjQVhVs5AxJ14H",
-				websiteId: "8952bfd6-95ab-4a99-819e-cf1cda1c2814",
-				apiUrl: "https://cloud.umami.is/api",
-				token: "api_0YozI61BHB1dKxeff9vbo30K3bvDvf3K", // 替换为你的 API Token
 			},
 		}),
 		swup({
