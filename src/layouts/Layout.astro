@@ -165,6 +165,46 @@ if (siteConfig.font) {
 			defer
 			src="https://cloud.umami.is/script.js"
 			data-website-id="8952bfd6-95ab-4a99-819e-cf1cda1c2814"></script>
+		<!-- Umami 统计初始化脚本 -->
+		<script is:inline>
+			window.addEventListener('load', function() {
+				window.oddmisc = {
+					getSiteStats: async function() {
+						return new Promise(function(resolve) {
+							// 尝试从 Umami API 获取统计数据
+							const websiteId = '8952bfd6-95ab-4a99-819e-cf1cda1c2814';
+							const now = Date.now();
+							const oneMonthAgo = now - 30 * 24 * 60 * 60 * 1000;
+
+							// 使用 Umami Cloud API (需要公开分享的统计)
+							fetch(`https://cloud.umami.is/api/v1/websites/${websiteId}/stats?startAt=${oneMonthAgo}&endAt=${now}`, {
+								method: 'GET',
+								headers: {
+									'Accept': 'application/json'
+								}
+							})
+								.then(res => {
+									if (!res.ok) throw new Error(`HTTP ${res.status}`);
+									return res.json();
+								})
+								.then(data => {
+									resolve({
+										pageviews: data.pageviews?.value || 0,
+										visits: data.visitors?.value || 0
+									});
+								})
+								.catch(err => {
+									console.warn('Umami API unavailable, showing placeholder stats:', err.message);
+									resolve({ pageviews: 0, visits: 0 });
+								});
+						});
+					},
+					getStats: async function(path) {
+						return Promise.resolve({ pageviews: 0, visitors: 0 });
+					}
+				};
+			});
+		</script>
 		<!-- 第三方分析脚本 -->
 		<AnalyticsScripts
 			thirdPartyAnalytics={siteConfig.thirdPartyAnalytics}
