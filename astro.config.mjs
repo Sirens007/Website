@@ -1,5 +1,5 @@
 import sitemap from "@astrojs/sitemap";
-import mdx from '@astrojs/mdx';
+import mdx from "@astrojs/mdx";
 import svelte, { vitePreprocess } from "@astrojs/svelte";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
@@ -42,7 +42,11 @@ export default defineConfig({
 	integrations: [
 		oddmisc({
 			umami: {
-				shareUrl: "https://cloud.umami.is/analytics/eu/share/UDTjQVhVs5AxJ14H",
+				shareUrl:
+					"https://cloud.umami.is/analytics/eu/share/UDTjQVhVs5AxJ14H",
+				websiteId: "8952bfd6-95ab-4a99-819e-cf1cda1c2814",
+				apiUrl: "https://cloud.umami.is/api",
+				token: "api_0YozI61BHB1dKxeff9vbo30K3bvDvf3K", // 替换为你的 API Token
 			},
 		}),
 		swup({
