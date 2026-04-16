@@ -3,7 +3,7 @@ title: Git基础命令
 published: 2025-08-20
 pinned: false
 description: 一篇关于 Git基础命令的笔记.
-tags: [Git,GitHub,bash]
+tags: [Git]
 category: 开发
 draft: false
 ---

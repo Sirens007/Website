@@ -3,8 +3,8 @@ title: GitHub Pages配置
 published: 2025-08-27
 pinned: false
 description: 一篇关于建立GitHub Pages博客的文章.
-tags: [JavaScript,GitHub Pages,笔记]
-category: 教程
+tags: [GitHub Pages]
+category: 钻研一下~
 draft: false
 ---
 

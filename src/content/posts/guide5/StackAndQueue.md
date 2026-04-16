@@ -141,36 +141,36 @@ public class MyStack {
 
 ```java
 // 有效的括号
-    public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-            if(ch == '(' || ch == '[' || ch == '{') {
-                // 如果匹配，进行压栈
-                stack.push(ch);
-            } else{
-                if(stack.empty()) {
-                    return false;
-                }
-                // 若不为空，继续判断是否匹配
-                char ch2 = stack.peek();
-                // 从栈中取出元素,即不走上面的if了，为右括号
-                if(ch == ')' && ch2 == '('
-                        || ch == '}' && ch2 == '{'
-                        || ch == ']' && ch2 =='['){
-                    stack.pop();
-                }else {
-                    // 若不匹配上述
-                    return false;
-                }
+public boolean isValid(String s) {
+    Stack<Character> stack = new Stack<>();
+    for (int i = 0; i < s.length(); i++) {
+        char ch = s.charAt(i);
+        if(ch == '(' || ch == '[' || ch == '{') {
+            // 如果匹配，进行压栈
+            stack.push(ch);
+        } else{
+            if(stack.empty()) {
+                return false;
+            }
+            // 若不为空，继续判断是否匹配
+            char ch2 = stack.peek();
+            // 从栈中取出元素,即不走上面的if了，为右括号
+            if(ch == ')' && ch2 == '('
+                    || ch == '}' && ch2 == '{'
+                    || ch == ']' && ch2 =='['){
+                stack.pop();
+            }else {
+                // 若不匹配上述
+                return false;
             }
         }
-        //处理匹配完右括号后，左括号是否多出来
-        if(!stack.empty()){
-            return false;
-        }
-        return true;
     }
+    //处理匹配完右括号后，左括号是否多出来
+    if(!stack.empty()){
+        return false;
+    }
+    return true;
+}
 ```
 
 #### 逆波兰表达式求值
@@ -188,12 +188,11 @@ public class MyStack {
 
 将括号去掉便得到我们的后缀表达式了，而如何按照原先规则运算就是我们这次讲的题了
 
-> **输入：**tokens = ["2","1","+","3","*"]
+> **输入**：tokens = ["2","1","+","3","*"]
 >
-> **输出：**9
+> **输出**：9
 >
-> **解释：**该算式转化为常见的中缀算术表达式为：((2 + 1) * 3) = 9
->
+> **解释**：该算式转化为常见的中缀算术表达式为：((2 + 1) * 3) = 9
 
 题目给出这样一个示例，可以想到每遍历到**操作数**就提取两个数字
 
@@ -205,46 +204,46 @@ public class MyStack {
 由上述思路得出
 
 ```java
-    // 逆波兰表达式求值
-    public int evalRPN(String[] tokens) {
-        Stack<Integer> stack = new Stack<>();
-        // 遍历字符串
-        for(String x : tokens){
-            // 匹配是否是操作符号
-            if(!isOperator(x)){
-                // 如果是数字就压栈
-                int num = Integer.parseInt(x);
-                stack.push(num);
-            } else{
-                // 不是数字就运算
-                int val2 = stack.pop();
-                int val1 = stack.pop();
-                switch(x){
-                    case"+":
-                        stack.push(val1+val2);
-                        break;
-                    case"-":
-                        stack.push(val1-val2);
-                        break;
-                    case"*":
-                        stack.push(val1*val2);
-                        break;
-                    case"/":
-                        stack.push(val1/val2);
-                        break;
-                }
+// 逆波兰表达式求值
+public int evalRPN(String[] tokens) {
+    Stack<Integer> stack = new Stack<>();
+    // 遍历字符串
+    for(String x : tokens){
+        // 匹配是否是操作符号
+        if(!isOperator(x)){
+            // 如果是数字就压栈
+            int num = Integer.parseInt(x);
+            stack.push(num);
+        } else{
+            // 不是数字就运算
+            int val2 = stack.pop();
+            int val1 = stack.pop();
+            switch(x){
+                case"+":
+                    stack.push(val1+val2);
+                    break;
+                case"-":
+                    stack.push(val1-val2);
+                    break;
+                case"*":
+                    stack.push(val1*val2);
+                    break;
+                case"/":
+                    stack.push(val1/val2);
+                    break;
             }
         }
-        return stack.pop();
     }
+    return stack.pop();
+}
 
-    private boolean isOperator(String ch){
-        if(ch.equals("+") || ch.equals("-")
-                || ch.equals("*") || ch.equals("/")){
-            return true;
-        }
-        return false;
+private boolean isOperator(String ch){
+    if(ch.equals("+") || ch.equals("-")
+            || ch.equals("*") || ch.equals("/")){
+        return true;
     }
+    return false;
+}
 ```
 
 ### 1.4 栈、虚拟机栈、栈帧的区分
@@ -380,6 +379,7 @@ public class MyQueue {
     public boolean isEmpty() {
         return usedSize == 0;
     }
+}
 ```
 
 从逻辑上，顺序结构（数组）、链式结构（单、双链表）都可以实现队列 Queue。
@@ -564,5 +564,5 @@ Deque<Integer> queue = new LinkedList<>();//双端队列的链式实现
 
 以上是我关于Java的笔记分享
 
-<font style="color:rgb(77, 77, 77);">感谢你读到这里，这也是我学习路上的一个小小记录。希望以后回头看时，能看到自己的成长~</font>
+感谢你读到这里，这也是我学习路上的一个小小记录。希望以后回头看时，能看到自己的成长~
 

@@ -131,13 +131,13 @@ int compare(T o1, T o2);
 ```
 
 ## 三种方式的对比
-| **<font style="color:rgb(31, 31, 31);">特性</font>**     | **<font style="color:rgb(31, 31, 31);">Object.equals</font>** | **<font style="color:rgb(31, 31, 31);">Comparable</font>**   | **<font style="color:rgb(31, 31, 31);">Comparator</font>**   |
-| -------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **<font style="color:rgb(31, 31, 31);">比较目的</font>** | <font style="color:rgb(31, 31, 31);">判断相等</font>         | <font style="color:rgb(31, 31, 31);">定义默认顺序</font>     | <font style="color:rgb(31, 31, 31);">定义多种/临时顺序</font> |
-| **<font style="color:rgb(31, 31, 31);">比较结果</font>** | <font style="color:rgb(31, 31, 31);">boolean</font>          | <font style="color:rgb(31, 31, 31);">int (负, 0, 正)</font>  | <font style="color:rgb(31, 31, 31);">int (负, 0, 正)</font>  |
-| **<font style="color:rgb(31, 31, 31);">修改位置</font>** | <font style="color:rgb(31, 31, 31);">类内部</font>           | <font style="color:rgb(31, 31, 31);">类内部（实现接口）</font> | <font style="color:rgb(31, 31, 31);">类外部（独立比较器）</font> |
-| **<font style="color:rgb(31, 31, 31);">灵活性</font>**   | <font style="color:rgb(31, 31, 31);">低</font>               | <font style="color:rgb(31, 31, 31);">中（一种规则固定）</font> | <font style="color:rgb(31, 31, 31);">高（多种规则切换）</font> |
-| **<font style="color:rgb(31, 31, 31);">典型方法</font>** | `a.equals(b)`                                                | `a.compareTo(b)`                                             | `c.compare(a, b)`                                            |
+| **特性**                                                 | **Object.equals** | **Comparable**     | **Comparator**       |
+| :------------------------------------------------------- | ----------------- | ------------------ | -------------------- |
+| **比较目的**                                             | 判断相等          | 定义默认顺序       | 定义多种/临时顺序    |
+| **比较结果**                                             | boolean           | int (负, 0, 正)    | int (负, 0, 正)      |
+| **<font style="color:rgb(31, 31, 31);">修改位置</font>** | 类内部            | 类内部（实现接口） | 类外部（独立比较器） |
+| **灵活性**                                               | 低                | 中（一种规则固定） | 高（多种规则切换）   |
+| **典型方法**                                             | `a.equals(b)`     | `a.compareTo(b)`   | `c.compare(a, b)`    |
 
 
 

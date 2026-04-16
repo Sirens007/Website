@@ -26,20 +26,19 @@ draft: false
 
 其中，树的一些基本概念有以下：
 
-> **节点的度：**一个节点含有子树的个数称为该节点的度；
+> **节点的度**：一个节点含有子树的个数称为该节点的度；
 >
-> **树的度：**一棵树中，所有节点度的最大值称为树的度；上图树的度为 3
+> **树的度**：一棵树中，所有节点度的最大值称为树的度；上图树的度为 3
 >
-> **叶子节点或终端节点：**度为 0 的节点称为叶子节点；
+> **叶子节点或终端节点**：度为 0 的节点称为叶子节点；
 >
-> **双亲节点或父节点：**若一个节点含有子节点，则这个节点称为其子节点的父节点；
+> **双亲节点或父节点**：若一个节点含有子节点，则这个节点称为其子节点的父节点；
 >
-> **根节点：**一棵树中，没有双亲节点的节点；
+> **根节点**：一棵树中，没有双亲节点的节点；
 >
-> **树的高度或深度：**树中节点的最大层次；上图树的高度为 4
+> **树的高度或深度**：树中节点的最大层次；上图树的高度为 4
 >
-> **非终端节点或分支节点：**度不为 0 的节点；
->
+> **非终端节点或分支节点**：度不为 0 的节点；
 
 ## 2.二叉树
 ### 2.1 二叉树的概念
@@ -52,8 +51,8 @@ draft: false
 并且：左子树和右子树本身也是二叉树
 
 #### 2.1.1 特殊的两种二叉树
-1. **满二叉树：**一棵二叉树，若每层的节点树都达到最大值，则这棵二叉树就是满二叉树。从数学关系上看，一颗二叉树的层数为 K，则节点总数为 2<sup>k</sup>- 1，则它就是满二叉树。
-2. **完全二叉树：**除了最后一层外，其余各层都被完全填满，并且最后一层的节点从左至右连续排列，中间不能空缺
+1. **满二叉树**：一棵二叉树，若每层的节点树都达到最大值，则这棵二叉树就是满二叉树。从数学关系上看，一颗二叉树的层数为 K，则节点总数为 2<sup>k</sup>- 1，则它就是满二叉树。
+2. **完全二叉树**：除了最后一层外，其余各层都被完全填满，并且最后一层的节点从左至右连续排列，中间不能空缺
 
 图像概念如下：
 ![](../assets/BinaryTree2.png)
@@ -135,16 +134,16 @@ draft: false
 ```java
 //二叉链表
 class Node {
-int val; // 数据域
-Node left; // 左孩子的引用，常常代表左孩子为根的整棵左子树
-Node right; // 右孩子的引用，常常代表右孩子为根的整棵右子树
+    int val; // 数据域
+    Node left; // 左孩子的引用，常常代表左孩子为根的整棵左子树
+    Node right; // 右孩子的引用，常常代表右孩子为根的整棵右子树
 }
 // 三叉链表
 class Node {
-int val; // 数据域
-Node left; // 左孩子的引用，常常代表左孩子为根的整棵左子树
-Node right; // 右孩子的引用，常常代表右孩子为根的整棵右子树
-Node parent; // 当前节点的根节点
+    int val; // 数据域
+    Node left; // 左孩子的引用，常常代表左孩子为根的整棵左子树
+    Node right; // 右孩子的引用，常常代表右孩子为根的整棵右子树
+    Node parent; // 当前节点的根节点
 }
 // 线索二叉树
 class Node {
@@ -207,51 +206,51 @@ public void inorderTraverse(ThreadNode root) {
 ```java
 public class ThreadedBinaryTreeDemo {
 
-    // 节点定义
-    static class ThreadNode {
-        char val;
-        ThreadNode left;
-        ThreadNode right;
+// 节点定义
+static class ThreadNode {
+    char val;
+    ThreadNode left;
+    ThreadNode right;
 
-        int ltag; // 0 = 左孩子，1 = 前驱
-        int rtag; // 0 = 右孩子，1 = 后继
+    int ltag; // 0 = 左孩子，1 = 前驱
+    int rtag; // 0 = 右孩子，1 = 后继
 
-        public ThreadNode(char val) {
-            this.val = val;
-        }
+    public ThreadNode(char val) {
+        this.val = val;
+    }
+}
+
+// 全局前驱指针
+static ThreadNode pre = null;
+// 递归过程中需要共享“上一个访问的节点”
+
+// 中序线索化
+public static void inorderThread(ThreadNode node) {
+    if (node == null) return;
+
+    // 1. 处理左子树（保证顺序：左→根→右）
+    inorderThread(node.left);
+
+    // 2. 处理当前节点
+
+    // (1) 建立前驱线索
+    if (node.left == null) {
+        node.left = pre;
+        node.ltag = 1;
     }
 
-    // 全局前驱指针
-    static ThreadNode pre = null;
-    // 递归过程中需要共享“上一个访问的节点”
-
-    // 中序线索化
-    public static void inorderThread(ThreadNode node) {
-        if (node == null) return;
-
-        // 1. 处理左子树（保证顺序：左→根→右）
-        inorderThread(node.left);
-
-        // 2. 处理当前节点
-
-        // (1) 建立前驱线索
-        if (node.left == null) {
-            node.left = pre;
-            node.ltag = 1;
-        }
-
-        // (2) 建立后继线索
-        if (pre != null && pre.right == null) {
-            pre.right = node;
-            pre.rtag = 1;
-        }
-
-        // (3) 更新 pre（当前节点成为下一个节点的前驱）
-        pre = node;
-
-        // 3. 处理右子树
-        inorderThread(node.right);
+    // (2) 建立后继线索
+    if (pre != null && pre.right == null) {
+        pre.right = node;
+        pre.rtag = 1;
     }
+
+    // (3) 更新 pre（当前节点成为下一个节点的前驱）
+    pre = node;
+
+    // 3. 处理右子树
+    inorderThread(node.right);
+}
 ```
 
 #### 2.3.2 二叉树的顺序存储
@@ -296,9 +295,8 @@ public class ThreadedBinaryTreeDemo {
 **思路**
 
 > 通过栈来存储当前节点的上一位
->
 
-**解题过程 **
+**解题过程**
 
 > 1. 将 root 赋给 cur，进入循环
 > 2. 循环中 cur 拿到节点就进行压栈并打印，随后向左移动
@@ -327,59 +325,59 @@ public class ThreadedBinaryTreeDemo {
     }
 ```
 
-**注意：**中序遍历（非递归）与此一样，只是打印位置不同
+**注意**：中序遍历（非递归）与此一样，只是打印位置不同
 
-**复杂度 **
+**复杂度**
 
 > 时间复杂度：O(N)
 >
-> 空间复杂度：**<font style="color:rgb(15, 17, 21);">O(N)</font>**<font style="color:rgb(15, 17, 21);">（最坏）/ </font>**<font style="color:rgb(15, 17, 21);">O(log N)</font>**<font style="color:rgb(15, 17, 21);">（平均）/ </font>**<font style="color:rgb(15, 17, 21);">O(1)</font>**<font style="color:rgb(15, 17, 21);">（右单支树）</font>
+> 空间复杂度：**O(N)**（最坏）/ **O(log N)**（平均）/ **O(1)**（右单支树）
 >
 
 ##### 2.中序遍历
 ```java
 // 中序遍历
-    public void inorderTree(TreeNode root) {
-        if(root == null) return;
-        inorderTree(root.left);
-        System.out.print(root.val+" ");
-        inorderTree(root.right);
-    }
+public void inorderTree(TreeNode root) {
+    if(root == null) return;
+    inorderTree(root.left);
+    System.out.print(root.val+" ");
+    inorderTree(root.right);
+}
 ```
 
 **中序遍历非递归方法与前序遍历非递归类似，仅仅调换打印位置**
 
 ```java
-    // 中序遍历非递归
-    public void inorderNor(TreeNode root) {
-        if(root == null) return;
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode cur = root;
+// 中序遍历非递归
+public void inorderNor(TreeNode root) {
+    if(root == null) return;
+    Stack<TreeNode> stack = new Stack<>();
+    TreeNode cur = root;
 
-        // 循环判断cur的右侧是否有元素
-        while(cur != null || !stack.isEmpty()) {
-            // 循环往下遍历左侧元素
-            while(cur != null) {
-                stack.push(cur);
-                cur = cur.left;
-            }
-            // cur为空，需要提出栈中一个元素
-            TreeNode top = stack.pop();
-            System.out.print(top.val + " ");
-            cur = top.right;
+    // 循环判断cur的右侧是否有元素
+    while(cur != null || !stack.isEmpty()) {
+        // 循环往下遍历左侧元素
+        while(cur != null) {
+            stack.push(cur);
+            cur = cur.left;
         }
+        // cur为空，需要提出栈中一个元素
+        TreeNode top = stack.pop();
+        System.out.print(top.val + " ");
+        cur = top.right;
     }
+}
 ```
 
 ##### 3.后序遍历
 ```java
-    // 后序遍历
-    public void postorderTree(TreeNode root) {
-        if(root == null) return;
-        postorderTree(root.left);
-        postorderTree(root.right);
-        System.out.print(root.val+" ");
-    }
+// 后序遍历
+public void postorderTree(TreeNode root) {
+    if(root == null) return;
+    postorderTree(root.left);
+    postorderTree(root.right);
+    System.out.print(root.val+" ");
+}
 ```
 
 **下面为非递归方法：**
@@ -396,7 +394,7 @@ public class ThreadedBinaryTreeDemo {
 > 通过栈来存储当前节点的上一位
 >
 
-**解题过程 **
+**解题过程**
 
 > 1. 思路延续前面的前序以及中序遍历的思想，仅在处理打印顺序时候需调整
 >
@@ -427,45 +425,44 @@ public class ThreadedBinaryTreeDemo {
     }
 ```
 
-**复杂度 **
+**复杂度**
 
 > **时间复杂度：O(N)**
 >
-> **<font style="color:rgb(15, 17, 21);">空间复杂度： O(N)</font>**<font style="color:rgb(15, 17, 21);">（最坏） / </font>**<font style="color:rgb(15, 17, 21);">O(log N)</font>**<font style="color:rgb(15, 17, 21);">（最好）</font>
->
+> **空间复杂度**： **O(N)**（最坏） / **O(log N)**（最好）
 
 #### 2.4.2 二叉树的其他操作
 ##### 1. 获取树中节点个数
 ```java
-    // 左子树叶子个数 + 右子树叶子个数（子问题法）
-    public int getLeafNodeCount(TreeNode root){
-        if(root == null) return 0;
-        if(root.left == null && root.right == null) return 1;
-        return getLeafNodeCount(root.left) + getLeafNodeCount(root.right);
-    }
+// 左子树叶子个数 + 右子树叶子个数（子问题法）
+public int getLeafNodeCount(TreeNode root){
+    if(root == null) return 0;
+    if(root.left == null && root.right == null) return 1;
+    return getLeafNodeCount(root.left) + getLeafNodeCount(root.right);
+}
 ```
 
 ##### 2. 获取叶子节点个数
 ```java
-    // 获取叶子个数（遍历法）
-    public static int count = 0;
-    public void getLeafNodeCount(TreeNode root) {
-        if(root == null) return;
-        if(root.left == null && root.right == null) {
-            count++;
-        }
-        getLeafNodeCount(root.left);
-        getLeafNodeCount(root.right);
+// 获取叶子个数（遍历法）
+public static int count = 0;
+public void getLeafNodeCount(TreeNode root) {
+    if(root == null) return;
+    if(root.left == null && root.right == null) {
+        count++;
     }
+    getLeafNodeCount(root.left);
+    getLeafNodeCount(root.right);
+}
 ```
 
 ##### 3. 获取二叉树的高度
 ```java
-    public int getHeight(TreeNode root) {
-        if(root == null) return 0;
-        return Math.max(getHeight(root.right)
-                , getHeight(root.left)) + 1;
-    }
+public int getHeight(TreeNode root) {
+    if(root == null) return 0;
+    return Math.max(getHeight(root.right)
+            , getHeight(root.left)) + 1;
+}
 ```
 
 ##### 4. 层序遍历

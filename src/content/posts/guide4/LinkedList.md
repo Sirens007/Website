@@ -183,33 +183,33 @@ public void addLast(int data) {
 ![](../assets/LinkedList7.png)
 
 ```java
-    @Override
-    public void remove(int key) {
-        if(this.head == null){
-            return;
-        }
-        if(this.head.val == key){
-            this.head = this.head.next;
-            return;
-        }
-        // 创建当前节点cur
-        ListNode cur = FindNodeBeforeKey(key);
-        cur.next = cur.next.next;
+@Override
+public void remove(int key) {
+    if(this.head == null){
+        return;
     }
+    if(this.head.val == key){
+        this.head = this.head.next;
+        return;
+    }
+    // 创建当前节点cur
+    ListNode cur = FindNodeBeforeKey(key);
+    cur.next = cur.next.next;
+}
 
-    // 查找到删除节点前的一个节点
-    private ListNode FindNodeBeforeKey(int key){
-        // 创建当前节点
-        ListNode cur = this.head;
-        // cur要每一个都走一遍
-        while(cur.next != null){
-            if(cur.next.val == key){
-                return cur;
-            }
-            cur = cur.next;
+// 查找到删除节点前的一个节点
+private ListNode FindNodeBeforeKey(int key){
+    // 创建当前节点
+    ListNode cur = this.head;
+    // cur要每一个都走一遍
+    while(cur.next != null){
+        if(cur.next.val == key){
+            return cur;
         }
-        return null;
+        cur = cur.next;
     }
+    return null;
+}
 ```
 
 利用删除节点的前一节点访问到删除节点的 `val` 值去匹配 `key`，以及当前节点 `cur` 的 `next` 索引的修改
@@ -332,13 +332,13 @@ public void remove(int key) {
 
   └── **双向链表** —— _“既知道前面，也知道后面”_
 
-| **<font style="color:rgb(31, 31, 31);">概念名称</font>** | **<font style="color:rgb(31, 31, 31);">属于什么</font>** | **<font style="color:rgb(31, 31, 31);">物理结构</font>** | **<font style="color:rgb(31, 31, 31);">在 Java 中的“肉身”</font>** |
-| --- | --- | --- | --- |
-| **<font style="color:rgb(31, 31, 31);">顺序表</font>** | <font style="color:rgb(31, 31, 31);">线性表的一种实现</font> | <font style="color:rgb(31, 31, 31);">连续</font>**<font style="color:rgb(31, 31, 31);">数组</font>** | `<font style="color:rgb(68, 71, 70);">ArrayList</font>` |
-| **<font style="color:rgb(31, 31, 31);">链表</font>** | <font style="color:rgb(31, 31, 31);">线性表的一种实现</font> | <font style="color:rgb(31, 31, 31);">分散</font>**<font style="color:rgb(31, 31, 31);">节点</font>**<font style="color:rgb(31, 31, 31);"> + </font>**<font style="color:rgb(31, 31, 31);">指针</font>** | `<font style="color:rgb(68, 71, 70);">LinkedList</font>` |
-| **<font style="color:rgb(31, 31, 31);">链表节点</font>** | <font style="color:rgb(31, 31, 31);">链表的组成零件</font> | <font style="color:rgb(31, 31, 31);">包含数据和指针的对象</font> | `<font style="color:rgb(68, 71, 70);">ListNode</font>`<font style="color:rgb(31, 31, 31);">类</font> |
+| 概念名称 | 属于什么         | 物理结构             | 在 Java 中的“肉身” |
+| :------: | :--------------- | :------------------- | :----------------- |
+|  顺序表  | 线性表的一种实现 | 连续数组             | ArrayList          |
+|   链表   | 线性表的一种实现 | 分散节点 + 指针      | LinkedList         |
+| 链表节点 | 链表的组成零件   | 包含数据和指针的对象 | ListNode类         |
 
 以上是我关于Java的笔记分享
 
-<font style="color:rgb(77, 77, 77);">感谢你读到这里，这也是我学习路上的一个小小记录。希望以后回头看时，能看到自己的成长~</font>
+感谢你读到这里，这也是我学习路上的一个小小记录。希望以后回头看时，能看到自己的成长~
 
