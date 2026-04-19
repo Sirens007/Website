@@ -43,7 +43,7 @@ export default defineConfig({
 		oddmisc({
 			umami: {
 				shareUrl:
-					"https://cloud.umami.is/analytics/eu/share/UDTjQVhVs5AxJ14H",
+					"https://cloud.umami.is/analytics/eu/share/8H7NiZlueqOMIG8Z",
 			},
 		}),
 		swup({
