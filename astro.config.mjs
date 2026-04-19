@@ -40,12 +40,6 @@ export default defineConfig({
 	output: "static",
 
 	integrations: [
-		oddmisc({
-			umami: {
-				shareUrl:
-					"https://cloud.umami.is/analytics/eu/share/8H7NiZlueqOMIG8Z",
-			},
-		}),
 		swup({
 			theme: false,
 			animationClass: "transition-swup-",
@@ -122,6 +116,12 @@ export default defineConfig({
 		}),
 		sitemap(),
 		mdx(),
+		oddmisc({
+			umami: {
+				shareUrl:
+					"https://cloud.umami.is/analytics/eu/share/8H7NiZlueqOMIG8Z",
+			},
+		}),
 	],
 	markdown: {
 		remarkPlugins: [
