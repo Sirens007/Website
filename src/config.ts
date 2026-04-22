@@ -118,7 +118,7 @@ export const siteConfig: SiteConfig = {
 		// "mobile" = 仅在移动端显示
 		// "desktop" = 仅在桌面端显示
 		// "both" = 在所有设备上显示
-		showModeSwitchOnMobile: "desktop",
+		showModeSwitchOnMobile: "both",
 	},
 
 	banner: {
@@ -447,7 +447,7 @@ export const commentConfig: CommentConfig = {
 	enable: true, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
 	system: "twikoo", // 评论系统选择: "twikoo" | "giscus"
 	twikoo: {
-		envId: "https://twikoo-sirens.netlify.app/.netlify/functions/twikoo",
+		envId: "https://twikoo-vercel-pearl-seven.vercel.app",
 		lang: SITE_LANG,
 	},
 	giscus: {
