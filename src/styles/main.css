@@ -50,6 +50,13 @@ html {
   scrollbar-gutter: stable;
 }
 
+/* 全局文本颜色 - 响应主题变化 */
+body {
+  color: var(--text-color) !important;
+  /* 禁用过渡以防止颜色闪烁 */
+  transition: none !important;
+}
+
 /* 页面顶部渐变高光效果 */
 .top-gradient-highlight {
   position: fixed;

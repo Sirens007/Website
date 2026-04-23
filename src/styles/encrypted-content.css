@@ -38,7 +38,7 @@
 #decrypted-content .expressive-code .title {
   @apply px-4 py-2 text-xs font-medium;
   background: var(--primary);
-  color: white;
+  color: var(--btn-content);
   font-family: var(--ec-codeFontFml, "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
 }
 
