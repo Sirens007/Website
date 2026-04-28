@@ -14,7 +14,7 @@
 
 .fancybox__caption {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  color: var(--modal-text-color);
+  color: white;
   font-size: 1rem;
   padding: 1rem;
   text-align: center;
@@ -77,7 +77,7 @@
 }
 
 .fancybox__infobar {
-  color: var(--modal-text-color);
+  color: white;
   font-size: 0.9rem;
   padding: 0 8px;
 }
