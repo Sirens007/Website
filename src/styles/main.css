@@ -48,6 +48,11 @@ html {
   scroll-behavior: smooth;
   /* 现代浏览器：为滚动条预留稳定空间 */
   scrollbar-gutter: stable;
+  color: var(--text-color);
+}
+
+body {
+  color: var(--text-color);
 }
 
 /* 页面顶部渐变高光效果 */
