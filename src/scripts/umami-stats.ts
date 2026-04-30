@@ -28,6 +28,12 @@ type UmamiShareData = {
 	websiteId?: string;
 };
 
+type UmamiShareDetails = {
+	id?: string;
+	entityId?: string;
+	websiteId?: string;
+};
+
 declare global {
 	interface Window {
 		__umamiStatsConfig?: UmamiStatsConfig;
@@ -133,6 +139,7 @@ const normalizeStats = (stats: UmamiStats = {}) => ({
 
 const statsCache = new Map<string, Promise<UmamiStats>>();
 let shareDataPromise: Promise<UmamiShareData | null> | null = null;
+let shareDetailsPromise: Promise<UmamiShareDetails | null> | null = null;
 
 const getStatsFromOddmisc = ({ path }: { path?: string } = {}) => {
 	if (!window.oddmisc) {
@@ -259,6 +266,40 @@ const getShareData = async (shareConfig: UmamiShareConfig) => {
 	return shareDataPromise;
 };
 
+const getShareDetails = async (
+	shareConfig: UmamiShareConfig,
+	shareData: UmamiShareData,
+) => {
+	const shareId = shareData.shareId ?? shareData.id;
+	const shareToken = shareData.token;
+
+	if (!shareId || !shareToken) {
+		return null;
+	}
+
+	shareDetailsPromise ??= fetch(
+		`${shareConfig.apiEndpoint}/share/id/${shareId}`,
+		{
+			headers: {
+				Accept: "application/json",
+				Authorization: `Bearer ${shareToken}`,
+			},
+		},
+	)
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error(
+					`Failed to fetch Umami share details: ${response.status}`,
+				);
+			}
+
+			return response.json() as Promise<UmamiShareDetails>;
+		})
+		.catch(() => null);
+
+	return shareDetailsPromise;
+};
+
 const fetchSharedStatsWithHeaders = async ({
 	apiEndpoint,
 	websiteId,
@@ -306,9 +347,16 @@ const fetchSharedUmamiStats = async ({
 	}
 
 	const shareData = await getShareData(shareConfig);
+	const shareDetails = shareData
+		? await getShareDetails(shareConfig, shareData)
+		: null;
 	const shareToken = shareData?.token;
 	const websiteId =
-		config.websiteId ?? shareData?.websiteId ?? shareData?.entityId;
+		shareDetails?.entityId ??
+		shareDetails?.websiteId ??
+		shareData?.entityId ??
+		shareData?.websiteId ??
+		config.websiteId;
 
 	if (!shareToken || !websiteId) {
 		throw new Error("Umami share data is missing website id or token");
@@ -321,6 +369,7 @@ const fetchSharedUmamiStats = async ({
 
 	if (path) {
 		params.set("path", path);
+		params.set("filters", JSON.stringify({ path }));
 	}
 
 	try {
