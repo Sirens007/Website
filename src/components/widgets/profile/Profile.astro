@@ -6,15 +6,6 @@ import Image from "../../atoms/Image/Image.astro";
 import TypewriterText from "../../atoms/typewriter-text/TypewriterText.astro";
 import I18nKey from "../../../i18n/i18nKey";
 import { i18n } from "../../../i18n/translation";
-
-const umamiStatsConfig = {
-	websiteId: import.meta.env.PUBLIC_UMAMI_WEBSITE_ID,
-	apiEndpoint: import.meta.env.PUBLIC_UMAMI_API_ENDPOINT,
-	baseUrl: import.meta.env.PUBLIC_UMAMI_BASE_URL,
-	shareUrl: import.meta.env.PUBLIC_UMAMI_SHARE_URL,
-	apiKey: import.meta.env.PUBLIC_UMAMI_API_KEY,
-	token: import.meta.env.PUBLIC_UMAMI_TOKEN,
-};
 ---
 
 <div class="card-base p-3">
@@ -119,54 +110,33 @@ const umamiStatsConfig = {
 	</div>
 </div>
 
-<script>
-	import "../../../scripts/umami-stats";
-</script>
-
 <script
 	is:inline
 	define:vars={{
 		profileStatsPageViews: i18n(I18nKey.profileStatsPageViews),
 		profileStatsVisits: i18n(I18nKey.profileStatsVisits),
 		profileStatsUnavailable: i18n(I18nKey.profileStatsUnavailable),
-		umamiStatsConfig,
 	}}
 >
-	window.__umamiStatsConfig = {
-		...window.__umamiStatsConfig,
-		...umamiStatsConfig,
-	};
-
 	function generateStatsText(pageViews, visits) {
 		return `${profileStatsPageViews} ${pageViews} · ${profileStatsVisits} ${visits}`;
 	}
 
-	function getUmamiStats(options) {
-		if (window.fetchUmamiStats) {
-			return window.fetchUmamiStats(options);
-		}
-
-		return new Promise((resolve, reject) => {
-			window.addEventListener(
-				"umami-stats-ready",
-				() => {
-					if (!window.fetchUmamiStats) {
-						reject(new Error("Umami stats client did not load"));
-						return;
-					}
-
-					window.fetchUmamiStats(options).then(resolve, reject);
-				},
-				{ once: true },
-			);
-		});
-	}
-
-	async function fetchSiteStats() {
+	async function fetchSiteStats(isRetry = false) {
 		const containers = document.querySelectorAll(".umami-stats-container");
 
+		// oddmisc 未加载则等待重试
+		if (!window.oddmisc) {
+			if (!isRetry) {
+				setTimeout(() => fetchSiteStats(true), 500);
+			} else {
+				containers.forEach((c) => c.classList.add("hidden"));
+			}
+			return;
+		}
+
 		try {
-			const stats = await getUmamiStats();
+			const stats = await window.oddmisc.getSiteStats();
 			const pageViews = stats.pageviews || 0;
 			const visits = stats.visits || 0;
 
@@ -186,24 +156,15 @@ const umamiStatsConfig = {
 		}
 	}
 
-	function scheduleStatsFetch(callback) {
-		if ("requestIdleCallback" in window) {
-			window.requestIdleCallback(callback, { timeout: 2000 });
-			return;
-		}
-
-		window.setTimeout(callback, 400);
-	}
-
 	// 避免多个 Profile 实例重复请求
 	if (!window.__siteStatsFetching) {
 		window.__siteStatsFetching = true;
 		if (document.readyState === "loading") {
 			document.addEventListener("DOMContentLoaded", () =>
-				scheduleStatsFetch(fetchSiteStats),
+				fetchSiteStats(),
 			);
 		} else {
-			scheduleStatsFetch(fetchSiteStats);
+			fetchSiteStats();
 		}
 	}
 </script>
