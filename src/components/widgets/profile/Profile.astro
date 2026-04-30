@@ -11,6 +11,7 @@ const umamiStatsConfig = {
 	websiteId: import.meta.env.PUBLIC_UMAMI_WEBSITE_ID,
 	apiEndpoint: import.meta.env.PUBLIC_UMAMI_API_ENDPOINT,
 	baseUrl: import.meta.env.PUBLIC_UMAMI_BASE_URL,
+	shareUrl: import.meta.env.PUBLIC_UMAMI_SHARE_URL,
 	apiKey: import.meta.env.PUBLIC_UMAMI_API_KEY,
 	token: import.meta.env.PUBLIC_UMAMI_TOKEN,
 };
@@ -185,15 +186,24 @@ const umamiStatsConfig = {
 		}
 	}
 
+	function scheduleStatsFetch(callback) {
+		if ("requestIdleCallback" in window) {
+			window.requestIdleCallback(callback, { timeout: 2000 });
+			return;
+		}
+
+		window.setTimeout(callback, 400);
+	}
+
 	// 避免多个 Profile 实例重复请求
 	if (!window.__siteStatsFetching) {
 		window.__siteStatsFetching = true;
 		if (document.readyState === "loading") {
 			document.addEventListener("DOMContentLoaded", () =>
-				fetchSiteStats(),
+				scheduleStatsFetch(fetchSiteStats),
 			);
 		} else {
-			fetchSiteStats();
+			scheduleStatsFetch(fetchSiteStats);
 		}
 	}
 </script>

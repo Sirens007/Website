@@ -51,6 +51,7 @@ const umamiStatsConfig = {
 	websiteId: import.meta.env.PUBLIC_UMAMI_WEBSITE_ID,
 	apiEndpoint: import.meta.env.PUBLIC_UMAMI_API_ENDPOINT,
 	baseUrl: import.meta.env.PUBLIC_UMAMI_BASE_URL,
+	shareUrl: import.meta.env.PUBLIC_UMAMI_SHARE_URL,
 	apiKey: import.meta.env.PUBLIC_UMAMI_API_KEY,
 	token: import.meta.env.PUBLIC_UMAMI_TOKEN,
 };
@@ -155,10 +156,11 @@ const umamiStatsConfig = {
         
         const id = container?.dataset.id;
         if (!id) {return;}
+        const slug = id.replace(/\.(md|mdx|markdown)$/i, "");
 
         try {
             const stats = await getUmamiStats({
-                path: `/posts/${id}/`,
+                path: `/posts/${slug}/`,
             });
             const pageViews = stats.pageviews || 0;
             const visits = stats.visits || 0;
@@ -176,10 +178,19 @@ const umamiStatsConfig = {
         }
     }
 
+    function scheduleStatsFetch(callback) {
+        if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(callback, { timeout: 2000 });
+            return;
+        }
+
+        window.setTimeout(callback, 400);
+    }
+
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', fetchPageViews);
+        document.addEventListener('DOMContentLoaded', () => scheduleStatsFetch(fetchPageViews));
     } else {
-        fetchPageViews();
+        scheduleStatsFetch(fetchPageViews);
     }
 </script>
 )}

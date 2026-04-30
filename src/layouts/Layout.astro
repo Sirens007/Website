@@ -110,6 +110,18 @@ if (!lang) {
 }
 const siteLang = lang.replace("_", "-");
 
+const normalizeUmamiBaseUrl = (value?: string) =>
+	value?.replace(/\/api\/?$/, "").replace(/\/+$/, "") ?? "";
+
+const umamiTrackingBaseUrl = normalizeUmamiBaseUrl(
+	import.meta.env.PUBLIC_UMAMI_BASE_URL,
+);
+const umamiTrackingWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+const umamiTrackingScriptUrl = umamiTrackingBaseUrl
+	? `${umamiTrackingBaseUrl}/script.js`
+	: "";
+const gtmId = import.meta.env.PUBLIC_GTM_ID;
+
 const bannerOffsetByPosition = {
 	top: `${BANNER_HEIGHT_EXTEND}vh`,
 	center: `${BANNER_HEIGHT_EXTEND / 2}vh`,
@@ -163,13 +175,18 @@ if (siteConfig.font) {
 	<head>
 		<meta charset="UTF-8" />
 
-		<script
-			is:inline
-			defer
-			src="https://cloud.umami.is/script.js"
-			data-website-id="8952bfd6-95ab-4a99-819e-cf1cda1c2814"></script>
+		{
+			umamiTrackingScriptUrl && umamiTrackingWebsiteId && (
+				<script
+					defer
+					src={umamiTrackingScriptUrl}
+					data-website-id={umamiTrackingWebsiteId}
+				/>
+			)
+		}
 		<!-- 第三方分析脚本 -->
 		<AnalyticsScripts
+			gtmId={gtmId}
 			thirdPartyAnalytics={siteConfig.thirdPartyAnalytics}
 		/>
 
@@ -217,13 +234,18 @@ if (siteConfig.font) {
 		style={bodyFontFamily ? `font-family: ${bodyFontFamily};` : ""}
 		data-overlayscrollbars-initialize
 	>
-		<noscript
-			><iframe
-				src="https://www.googletagmanager.com/ns.html?id=GTM-KRX3XGVH"
-				height="0"
-				width="0"
-				style="display:none;visibility:hidden"></iframe></noscript
-		>
+		{
+			gtmId && (
+				<noscript>
+					<iframe
+						src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+						height="0"
+						width="0"
+						style="display:none;visibility:hidden"
+					/>
+				</noscript>
+			)
+		}
 		<!-- 页面顶部渐变高光效果 - 只在full和semifull模式下显示 -->
 		{shouldShowTopHighlight && <div class="top-gradient-highlight" />}
 
