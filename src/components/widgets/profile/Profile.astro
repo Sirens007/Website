@@ -128,7 +128,11 @@ import { i18n } from "../../../i18n/translation";
 		// oddmisc 未加载则等待重试
 		if (!window.oddmisc) {
 			if (!isRetry) {
-				setTimeout(() => fetchSiteStats(true), 500);
+				window.addEventListener(
+					"oddmisc-ready",
+					() => fetchSiteStats(true),
+					{ once: true },
+				);
 			} else {
 				containers.forEach((c) => c.classList.add("hidden"));
 			}
@@ -151,20 +155,17 @@ import { i18n } from "../../../i18n/translation";
 				el.textContent = generateStatsText(pageViews, visits);
 			});
 		} catch (error) {
-			console.error("Error fetching site stats:", error);
+			console.warn("Site stats unavailable:", error);
 			containers.forEach((c) => c.classList.add("hidden"));
 		}
 	}
 
 	// 避免多个 Profile 实例重复请求
-	if (!window.__siteStatsFetching) {
-		window.__siteStatsFetching = true;
-		if (document.readyState === "loading") {
-			document.addEventListener("DOMContentLoaded", () =>
-				fetchSiteStats(),
-			);
-		} else {
-			fetchSiteStats();
-		}
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", () => fetchSiteStats());
+	} else {
+		fetchSiteStats();
 	}
+	document.addEventListener("astro:page-load", () => fetchSiteStats());
+	document.addEventListener("swup:contentReplaced", () => fetchSiteStats());
 </script>

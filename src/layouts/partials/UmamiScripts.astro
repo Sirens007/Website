@@ -1,0 +1,206 @@
+---
+const umamiBaseUrl = (
+	import.meta.env.PUBLIC_UMAMI_BASE_URL || "https://umami.sirens007.cn"
+).replace(/\/$/, "");
+const umamiWebsiteId =
+	import.meta.env.PUBLIC_UMAMI_WEBSITE_ID ||
+	"924612c3-6a04-4393-9c21-58a9d65aea98";
+const umamiShareUrl =
+	import.meta.env.PUBLIC_UMAMI_SHARE_URL ||
+	`${umamiBaseUrl}/share/TlJ67vvIIBRw5gF3`;
+const umamiStatsCacheTtl = Number(
+	import.meta.env.PUBLIC_UMAMI_STATS_CACHE_TTL ?? 0,
+);
+const umamiStatsTimeout = Number(
+	import.meta.env.PUBLIC_UMAMI_STATS_TIMEOUT ?? 2500,
+);
+---
+
+<script
+	is:inline
+	defer
+	src={`${umamiBaseUrl}/script.js`}
+	data-website-id={umamiWebsiteId}></script>
+
+<script
+	is:inline
+	define:vars={{
+		umamiShareUrl,
+		umamiWebsiteId,
+		umamiStatsCacheTtl,
+		umamiStatsTimeout,
+	}}
+>
+	(() => {
+		if (!umamiShareUrl) {
+			return;
+		}
+
+		const state = (window.__umamiStatsState ||= {
+			cache: new Map(),
+			inflight: new Map(),
+			shareData: null,
+			sharePromise: null,
+		});
+
+		function parseShareUrl(shareUrl) {
+			const url = new URL(shareUrl, window.location.origin);
+			const parts = url.pathname.split("/").filter(Boolean);
+			const shareIndex = parts.indexOf("share");
+			const shareId = parts[shareIndex + 1];
+
+			if (shareIndex < 0 || !shareId) {
+				throw new Error("Invalid Umami share URL");
+			}
+
+			const prefix = parts.slice(0, shareIndex).join("/");
+			return {
+				apiBase: `${url.origin}${prefix ? `/${prefix}` : ""}/api`,
+				shareId,
+			};
+		}
+
+		const config = parseShareUrl(umamiShareUrl);
+		const cacheTtl = Math.max(Number(umamiStatsCacheTtl) || 0, 0);
+		const timeoutMs = Math.max(Number(umamiStatsTimeout) || 2500, 1000);
+
+		function readMetric(value) {
+			return Number(value?.value ?? value ?? 0) || 0;
+		}
+
+		async function fetchWithTimeout(url, options = {}) {
+			const controller = new AbortController();
+			const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+			try {
+				return await fetch(url, {
+					...options,
+					signal: controller.signal,
+					credentials: "omit",
+				});
+			} finally {
+				clearTimeout(timeout);
+			}
+		}
+
+		async function getShareData() {
+			if (state.shareData) {
+				return state.shareData;
+			}
+			if (state.sharePromise) {
+				return state.sharePromise;
+			}
+
+			state.sharePromise = (async () => {
+				const response = await fetchWithTimeout(
+					`${config.apiBase}/share/${config.shareId}`,
+				);
+
+				if (!response.ok) {
+					throw new Error(`Umami share failed: ${response.status}`);
+				}
+
+				const data = await response.json();
+				const shareData = {
+					websiteId:
+						data.websiteId || data.website?.id || umamiWebsiteId,
+					token: data.token || data.shareToken || data.id,
+				};
+
+				if (!shareData.websiteId || !shareData.token) {
+					throw new Error("Umami share data is incomplete");
+				}
+
+				state.shareData = shareData;
+				return shareData;
+			})().finally(() => {
+				state.sharePromise = null;
+			});
+
+			return state.sharePromise;
+		}
+
+		async function getStats(path) {
+			const key = path || "__site__";
+			const cached = state.cache.get(key);
+
+			if (
+				cacheTtl > 0 &&
+				cached &&
+				Date.now() - cached.timestamp < cacheTtl
+			) {
+				return { ...cached.value, _fromCache: true };
+			}
+
+			if (state.inflight.has(key)) {
+				return state.inflight.get(key);
+			}
+
+			const request = (async () => {
+				const shareData = await getShareData();
+				const params = new URLSearchParams({
+					startAt: "0",
+					endAt: Date.now().toString(),
+				});
+
+				if (path) {
+					params.set("path", `eq.${path}`);
+				}
+
+				const response = await fetchWithTimeout(
+					`${config.apiBase}/websites/${shareData.websiteId}/stats?${params.toString()}`,
+					{
+						headers: {
+							"x-umami-share-token": shareData.token,
+							"x-umami-share-context": config.shareId,
+						},
+					},
+				);
+
+				if (!response.ok) {
+					if (response.status === 401) {
+						state.shareData = null;
+					}
+					throw new Error(`Umami stats failed: ${response.status}`);
+				}
+
+				const data = await response.json();
+				const stats = {
+					pageviews: readMetric(data.pageviews),
+					visitors: readMetric(data.visitors),
+					visits: readMetric(data.visits),
+				};
+
+				if (cacheTtl > 0) {
+					state.cache.set(key, {
+						value: stats,
+						timestamp: Date.now(),
+					});
+				}
+
+				return stats;
+			})().finally(() => {
+				state.inflight.delete(key);
+			});
+
+			state.inflight.set(key, request);
+			return request;
+		}
+
+		window.oddmisc = {
+			getStats,
+			getPageStats: getStats,
+			getSiteStats: () => getStats(),
+			clearCache: () => {
+				state.cache.clear();
+				state.shareData = null;
+			},
+		};
+
+		window.dispatchEvent(
+			new CustomEvent("oddmisc-ready", {
+				detail: { client: window.oddmisc },
+			}),
+		);
+	})();
+</script>

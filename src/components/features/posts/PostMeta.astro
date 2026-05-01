@@ -117,7 +117,7 @@ const {
         const container = document.querySelector('.umami-page-views');
         
         if (!window.oddmisc) {
-            container?.classList.add('hidden');
+            window.addEventListener('oddmisc-ready', fetchPageViews, { once: true });
             return;
         }
 
@@ -137,7 +137,7 @@ const {
             container?.classList.remove('hidden');
             container.querySelector('.page-views-display').textContent = generateStatsText(pageViews, visits);
         } catch (error) {
-            console.error('Error fetching page views:', error);
+            console.warn('Page views unavailable:', error);
             container?.classList.add('hidden');
         }
     }
@@ -147,5 +147,7 @@ const {
     } else {
         fetchPageViews();
     }
+    document.addEventListener('astro:page-load', fetchPageViews);
+    document.addEventListener('swup:contentReplaced', fetchPageViews);
 </script>
 )}
