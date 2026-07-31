@@ -5,7 +5,7 @@ pinned: false
 description: "从堆的结构与操作出发，讲解建堆、调整及优先队列实现，并给出 TopK 问题的常见解法."
 image: ./d7.png
 tags: ["数据结构", "Java"]
-category: 开发
+category: 数据结构
 draft: false
 ---
 

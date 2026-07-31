@@ -5,7 +5,7 @@ pinned: false
 description: "通过示例分析 Java 对象比较的三种实现方式，包括 equals 重写、自然排序与自定义比较器."
 image: ./d8.png
 tags: ["数据结构", "Java"]
-category: 开发
+category: 数据结构
 draft: false
 ---
 

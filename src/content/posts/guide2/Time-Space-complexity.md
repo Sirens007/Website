@@ -5,7 +5,7 @@ pinned: false
 description: "系统讲解时间与空间复杂度，从大 O 表示法到典型算法推导，重点分析平均时间复杂度的计算方法与实际案例."
 image: ./d2.png
 tags: ["数据结构", "Java"]
-category: 开发
+category: 数据结构
 draft: false
 ---
 

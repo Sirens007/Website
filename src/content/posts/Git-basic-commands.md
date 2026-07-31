@@ -4,7 +4,7 @@ published: 2025-08-20
 pinned: false
 description: 一篇关于 Git基础命令的笔记.
 tags: [Git]
-category: 开发
+category: Git
 draft: false
 ---
 

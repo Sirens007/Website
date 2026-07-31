@@ -4,7 +4,7 @@ published: 2025-09-27
 pinned: false
 description: "用实例讲解多态思想"
 tags: ["Java SE", "IDEA"]
-category: 开发
+category: Java SE
 draft: false
 ---
 

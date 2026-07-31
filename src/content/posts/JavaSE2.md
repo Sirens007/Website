@@ -4,7 +4,7 @@ published: 2025-09-16
 pinned: false
 description: "初步学习Java语法."
 tags: ["Java SE", "IDEA"]
-category: 开发
+category: Java SE
 draft: false
 ---
 

@@ -4,7 +4,7 @@ published: 2025-09-22
 pinned: false
 description: "深度学习Java的类与对象."
 tags: ["Java SE","IDEA"]
-category: 开发
+category: Java SE
 draft: false
 ---
 

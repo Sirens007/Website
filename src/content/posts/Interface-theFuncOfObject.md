@@ -4,7 +4,7 @@ published: 2025-10-17
 pinned: false
 description: "拓展接口在实际中应用的例子."
 tags: ["Java SE", "IDEA"]
-category: 开发
+category: Java SE
 draft: false
 ---
 

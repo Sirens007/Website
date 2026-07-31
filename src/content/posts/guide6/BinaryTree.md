@@ -5,7 +5,7 @@ pinned: false
 description: "从树的基础概念出发，系统总结二叉树的结构特点、性质推导、存储方式以及多种遍历实现方法."
 image: ./d6.png
 tags: ["数据结构", "Java"]
-category: 开发
+category: 数据结构
 draft: false
 ---
 

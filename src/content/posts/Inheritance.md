@@ -4,7 +4,7 @@ published: 2025-09-27
 pinned: false
 description: "深度解析，详细了解Java继承"
 tags: ["Java SE", "IDEA"]
-category: 开发
+category: Java SE
 draft: false
 ---
 

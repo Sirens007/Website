@@ -5,7 +5,7 @@ pinned: false
 description: "梳理 Java 中栈（Stack）与队列（Queue）的基础概念，包含物理结构对比、用数组模拟实现循环队列，以及有效的括号等经典 LeetCode 题解思路."
 image: ./d5.png
 tags: ["数据结构", "Java"]
-category: 开发
+category: 数据结构
 draft: false
 ---
 

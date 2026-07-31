@@ -4,7 +4,7 @@ published: 2025-10-17
 pinned: false
 description: "深度了解抽象类、接口的应用，补充对Object的了解."
 tags: ["Java SE", "IDEA"]
-category: 开发
+category: Java SE
 draft: false
 ---
 

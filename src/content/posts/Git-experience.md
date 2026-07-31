@@ -4,7 +4,7 @@ published: 2025-08-27
 pinned: false
 description: 一篇关于 Git 使用经验的文章.
 tags: [Git]
-category: 开发
+category: Git
 draft: false
 ---
 
