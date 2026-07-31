@@ -3,6 +3,7 @@ title: MySQL数据库：约束
 published: 2026-07-25
 pinned: false
 description: "了解数据库约束，学习约束语法."
+image: ./mysql.png
 tags: ["MySQL"]
 category: MySQL
 draft: false

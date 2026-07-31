@@ -3,6 +3,7 @@ title: MySQL数据库：设计
 published: 2026-07-26
 pinned: false
 description: "认识MySQL数据库设计原理."
+image: ./mysql.png
 tags: ["MySQL"]
 category: MySQL
 draft: false

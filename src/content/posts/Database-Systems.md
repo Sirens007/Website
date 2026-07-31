@@ -417,6 +417,7 @@ R表示关系名， n表示关系的 <font style="color:#2F4BDA;">目或度</fon
 <font style="color:#2F4BDA;">规则：</font>**针对某一具体关系数据库的约束条件，它反映某一具体应用所涉及的数据必须满足的语义要求。** 关系模型应提供定义和检验这类完整性的机制，以便用统一的系统的方法处理它们， 而不需由应用程序承担这一 功能。
 
 ## 2.4 关系代数
+
 **关系代数是一种抽象的查询语言，用对关系的运算来表达查询。** 关系代数的运算对象是关系，运算结果也是关系。
 
 关系代数按运算符的不同可分为 门<font style="color:#213BC0;">传统的集合运算 </font>和 <font style="color:#213BC0;">专⻔的关系运算</font> 两类。
@@ -424,6 +425,7 @@ R表示关系名， n表示关系的 <font style="color:#2F4BDA;">目或度</fon
 集合运算是从关系的⽔平方向即行的⻆度进行，专门的关系运算不仅涉及行而且涉及列。
 
 ### <font style="color:#DF2A3F;">传统的集合运算</font>
+
 **传统的集合运算是⼆目运算，包括并、差、交、笛卡⼉积** **4** **种运算。** 
 
 **设关系 R 和关系 S 具有相同的目 n（即两个关系都有 n 个属性），且相应的属性取自同一个域，t 是元组变量，t ∈ R 表示 t 是 R 的一个元组。**
@@ -447,80 +449,7 @@ R：n 目关系，k1 个元组，S：m 目关系，k2 个元组。
 ### <font style="color:#DF2A3F;">专门的关系运算</font>
 **关系运算包括：选择、投影、连接、除运算。** 
 
-相关记号说明：略。（P49)
-
-<font style="color:#2F4BDA;">选择 / 限制 </font><font style="color:#C75C00;">selection / restriction</font>：在关系 R 中选择满足给定条件的诸元组。
-
-$ \sigma_F(R) = \left\{ t \mid t \in R \land F(t)=\text{真} \right\} $  
-选择运算实际上是从关系 R 中选取使逻辑表达式 F 为真的元组。这是从行的角度进行的运算。  
-<font style="color:#2F4BDA;">投影</font> <font style="color:#C75C00;">projection</font>：从 R 中选择出若干属性列组成新的关系。  
-$ \Pi_A(R)
-=
-\left\{
-t[A]
-\mid
-t \in R
-\right\} $  
-投影操作是从列的角度进行的运算。  
-<font style="color:#2F4BDA;">连接</font><font style="color:#C75C00;"> </font><font style="color:#C75C00;">join</font>：连接也称为 θ 连接。它是从两个关系的笛卡尔积中选取属性间满足一定条件的元组。
-
-$ R \bowtie_{A\theta B} S
-=
-\left\{
-t_r t_s
-\mid
-t_r \in R
-\land
-t_s \in S
-\land
-t_r[A] \mathrel{\theta} t_s[B]
-\right\} $  
-连接运算从 R 和 S 的笛卡尔积 R × S 中选取 R 关系在 A 属性组上的值与 S 关系在 B 属性组上的值满足比较关系 θ 的元组。  
-**等值连接** <font style="color:#C75C00;">equijoin</font>：$ R \bowtie_{A=B} S
-=
-\left\{
-t_r t_s
-\mid
-t_r \in R
-\land
-t_s \in S
-\land
-t_r[A]=t_s[B]
-\right\} $  
-θ 为“=”的连接运算称为等值连接。从关系 R 和 S 的广义笛卡尔积中选取 A、B 属性值相等的那些元组。  
-**自然连接** <font style="color:#C75C00;">natural join</font>：$ R \bowtie S
-=
-\left\{
-t_r t_s[U-B]
-\mid
-t_r \in R
-\land
-t_s \in S
-\land
-t_r[B]=t_s[B]
-\right\} $  
-自然连接是一种特殊的等值连接。它要求两个关系中进行比较的分量必须是同名的属性组，并且在结果中把重复的属性列去掉。  
-连接运算中舍弃的元组称为悬浮元组 <font style="color:#C75C00;">dangling tuple</font>。  
-**外连接** <font style="color:#C75C00;">outerjoin</font>：把悬浮元组也保存在结果关系中，而在其他属性上填空值 NULL，记作 $ R \mathbin{\text{⟗}} S $；  
-**左外连接** <font style="color:#C75C00;">left outer join / left join</font>：只保留左边关系 R 中的悬浮元组，记作$ R \mathbin{\text{⟕}} S $；  
-**右外连接**<font style="color:#C75C00;"> </font><font style="color:#C75C00;">right outer join / right join</font>：只保留右边关系 S 中的悬浮元组，记作$ R \mathbin{\text{⟖}} S $；  
-<font style="color:#2F4BDA;">除 </font><font style="color:#C75C00;">division</font>： 设关系 $R$ 除以关系 $ S $的结果为关系 $ T $，则 $ T $ 包含所有在 $ R $中但不在 $ S $ 中的属性及其值，且 $ T $ 中的元组与 $ S $ 中元组的所有组合都在 $ R $ 中。 下面用象集来定义除法。  
-
-**下面用象集来定义除法：  
-给定关系** $ R(X,Y) $ **和**$ S(Y,Z) $**其中,**$ X $**、**$ Y $**、**$ Z $**为属性组。关系** $ R $ **中的** $ Y $**与关系** $ S $ **中的** $ Y $ **可以有不同的属性名，但必须出自相同的域集。**  
-
-**关系** $ R $ **与关系** $ S $ **的除运算得到一个新的关系** $ P(X) $**。**$ P $ **是关系** $ R $ **中满足下列条件的元组在属性组** $ X $ **上的投影： 元组在** $ X $**上的分量值** $ x $ **的象集** $ Y_x $**，包含关系** $ S $ **在属性组** $ Y $ **上投影的集合。记作** $ R \div S
-=
-\left\{
-t_r[X]
-\mid
-t_r \in R
-\land
-\Pi_Y(S) \subseteq Y_x
-\right\} $**。  
- 其中，**$ Y_x $ **为** $ x $ **在关系** $ R $ **中的象集，并且：**  $ x=t_r[X] $**。**
-
-**除操作是同时从行和列角度进行运算。**
+![](./assets/Database-Systems32.png)
 
 # Note 03 关系数据库标准语言 SQL
 ## 3.1 SQL 概述
@@ -636,7 +565,7 @@ CREATE SCHEMA AUTHORIZATION WANG;
 
 <font style="color:#E746A4;">语句格式</font>：【CREATE SCHEMA < 模式名 > AUTHORIZATION < 用户名 >
 
-                                    [ < 表定义子句> | < 视图定义子句> | <授权定义子句> ] ;】
+​                                [ < 表定义子句> | < 视图定义子句> | <授权定义子句> ] ;】
 
 ```sql
 /*为用户 ZHANG 创建一个模式 TEST，并且在其中定义一个表 TAB1*/
@@ -668,11 +597,9 @@ DROP SCHEMA ZHANG CASCADE;
 
 ### <font style="color:#DF2A3F;">基本表的定义、删除与修改</font>
 #### <font style="color:#0C68CA;">定义基本表</font>
-语句格式：【CREATE TABLE < 表名 > ( < 列名 >< 数据类型 >［ 列级完整性约束条件 ］ 
+语句格式：【CREATE TABLE < 表名 > ( < 列名 >< 数据类型 >［ 列级完整性约束条件 ］                                                  					[, < 列名 > < 数据类型 > [ 列级完整性约束条件 ] ]
 
-                                                         [, < 列名 > < 数据类型 > [ 列级完整性约束条件 ] ]
-    
-                                                         [, < 表级完整性约東条件 > ] ) ;】
+​                                        [, < 表级完整性约東条件 > ] ) ;】
 
 ```sql
 /*建立一个“学生”表 Student*/
@@ -705,6 +632,7 @@ CREATE TABLE SC(Sno CHAR(9)，
 ```
 
 #### <font style="color:#0C68CA;">数据类型</font>
+
 ![](./assets/Database-Systems12.png)
 
 ![](./assets/Database-Systems13.png)

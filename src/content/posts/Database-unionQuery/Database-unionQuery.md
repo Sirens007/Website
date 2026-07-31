@@ -3,6 +3,7 @@ title: MySQL数据库：联合查询
 published: 2026-07-28
 pinned: false
 description: "系统学习MySQL多表连接、子查询、集合运算、结果写入及执行计划分析."
+image: ./mysql.png
 tags: ["MySQL"]
 category: MySQL
 draft: false

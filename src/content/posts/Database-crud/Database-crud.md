@@ -3,6 +3,7 @@ title: MySQL数据库：增删改查
 published: 2026-07-22
 pinned: false
 description: "了解MySQL基本CRUD语法."
+image: ./mysql.png
 tags: ["MySQL"]
 category: MySQL
 draft: false
