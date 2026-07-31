@@ -62,7 +62,7 @@ MySQL 常用嵌套循环，合适的连接索引可加快内层查找。8.0.18 �
 
 SQL 的逻辑处理顺序可简化为：
 
-![](./assets/unionQuery0.png)
+![](../assets/unionQuery0.png)
 
 ---
 

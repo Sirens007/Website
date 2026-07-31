@@ -40,7 +40,7 @@ draft: false
 
 ### 1.2  数据完整性的四个角度
 
-### ![](./assets/constraint0.png)
+### ![](../assets/constraint0.png)
 
 这张图说明：
 
@@ -776,7 +776,7 @@ drop primary key;
 ### 6.2 主表、从表、主键和外键
 
 
-![](./assets/constraint1.png)
+![](../assets/constraint1.png)
 
 以班级与学生为例：
 
@@ -971,7 +971,7 @@ on update cascade
 
 ### 6.8 如何选择外键动作
 可以按下面的顺序思考：
-![](./assets/constraint2.png)
+![](../assets/constraint2.png)
 
 初学和普通业务设计中，优先使用 `restrict`，等业务语义非常明确时再选择 `cascade` 或 `set null`。
 
