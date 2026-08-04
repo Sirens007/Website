@@ -220,16 +220,21 @@ export const siteConfig: SiteConfig = {
 		asciiFont: {
 			// 英文字体 - 优先级最高
 			// 指定为英文字体则无论字体包含多大范围，都只会保留 ASCII 字符子集
-			fontFamily: "ZenMaruGothic-Medium",
+			fontFamily: "Inter",
 			fontWeight: "400",
-			localFonts: ["ZenMaruGothic-Medium.ttf"],
+			localFonts: [
+				"Inter-Regular.ttf",
+				"Inter-Medium.ttf",
+				"Inter-SemiBold.ttf",
+				"Inter-Bold.ttf",
+			],
 			enableCompress: true, // 启用字体子集优化，减少字体文件大小
 		},
 		cjkFont: {
 			// 中日韩字体 - 作为回退字体
-			fontFamily: "萝莉体 第二版",
-			fontWeight: "500",
-			localFonts: ["loli.ttf"],
+			fontFamily: "Noto Sans SC",
+			fontWeight: "400",
+			localFonts: ["NotoSansSC-Regular.ttf", "NotoSansSC-Bold.ttf"],
 			enableCompress: true, // 启用字体子集优化，减少字体文件大小
 		},
 	},
@@ -627,8 +632,8 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 
 	// 侧栏组件布局配置
 	components: {
-		left: ["profile", "announcement", "tags", "card-toc"],
-		right: ["site-stats", "calendar", "categories", "music-sidebar"],
+		left: ["profile", "announcement", "tags", "card-toc", "site-stats"],
+		right: [], //"calendar", "categories", "music-sidebar"
 		drawer: [
 			"profile",
 			"announcement",
