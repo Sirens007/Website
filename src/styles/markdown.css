@@ -1,10 +1,6 @@
 @reference "tailwindcss";
 
 .custom-md {
-
-  font-size: 14px;
-  line-height: 1.8;
-
   h1 {
     @apply text-3xl;
   }
@@ -191,12 +187,6 @@
     display: block;
     padding-right: 3rem;
     box-sizing: border-box;
-  }
-}
-
-@media (min-width: 768px) {
-  .custom-md {
-    font-size: 15px;
   }
 }
 
