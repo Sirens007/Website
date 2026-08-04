@@ -57,6 +57,30 @@ const useJapaneseBadge = siteConfig.toc.useJapaneseBadge;
 
 	const cardTocManagers = new WeakMap();
 
+	function isArticlePage() {
+		return /^\/posts\/.+/.test(window.location.pathname);
+	}
+
+	function syncCardTOCVisibility(root: Element) {
+		const widget = root.closest("widget-layout");
+		if (!(widget instanceof HTMLElement)) {
+			return false;
+		}
+
+		const shouldShow = isArticlePage();
+		widget.hidden = !shouldShow;
+
+		if (!shouldShow) {
+			const manager = cardTocManagers.get(root);
+			if (manager && typeof manager.cleanup === "function") {
+				manager.cleanup();
+			}
+			cardTocManagers.delete(root);
+		}
+
+		return shouldShow;
+	}
+
 	/**
 	 * 为单个 card-toc 实例初始化目录。
 	 * 目录绑定当前组件自己的内容容器，避免左侧多断点并存时命中隐藏实例。
@@ -104,7 +128,9 @@ const useJapaneseBadge = siteConfig.toc.useJapaneseBadge;
 	 */
 	function initAllCardTOCs() {
 		document.querySelectorAll("[data-card-toc-root]").forEach((root) => {
-			initCardTOC(root);
+			if (syncCardTOCVisibility(root)) {
+				initCardTOC(root);
+			}
 		});
 	}
 
